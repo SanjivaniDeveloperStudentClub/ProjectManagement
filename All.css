@@ -1,0 +1,533 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* common css code */
+.font-style-Quicksand {
+    color: var(--Background, #27374D);
+    /* text-align: center; */
+    font-family: Quicksand;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* Ndetail css */
+/* this css is also used in many pages that have same design or button */
+.NDetail-main-section {
+    width: 100%;
+    padding: 2vh 0;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+.backward-arrow-icon {
+    margin: 1vh 1vh;
+}
+
+.NDetail-project-title {
+    margin: 1vh 2vh;
+    /* background-color: blue; */
+}
+
+.project-information-section,
+.project-requirement-section {
+    width: 84%;
+    border-radius: 2vh;
+    text-align: justify;
+    padding: 2vh;
+    height: 100%;
+    background-color: rgb(244, 245, 245);
+    margin: 2vh auto;
+}
+
+/* //to :increment font size */
+.fs-2x {
+    font-size: 18px;
+}
+
+.Ndetail-project-document {
+    display: flex;
+    background-color: rgb(244, 245, 245);
+    width: 83%;
+    padding: 2vh;
+    margin: auto;
+    border-radius: 2vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile-logo {
+    width: 8vh;
+    height: 8vh;
+    /* background-color: green; */
+    /* margin: auto; */
+    background-size: cover;
+    background-image: url("./img/logo.png");
+}
+
+.project-overview {
+    margin: 1vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.project-overview-title {
+    margin: 2vh 2vh;
+}
+
+.project-overview-title-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 1vh auto;
+}
+
+.project-overview-title-info p {
+    font-size: 14px;
+}
+
+.project-suggestion {
+    padding: 0;
+    height: 9vh;
+    /* margin: 0; */
+}
+
+.profile-img {
+    width: 8vh;
+    height: 8vh;
+    background-color: rgb(216, 189, 189);
+    border-radius: 50%;
+    margin: 0;
+    /* padding:0; */
+}
+
+.hod-suggestion-info {
+    width: 90%;
+    margin: auto;
+}
+
+.project-suggestion-headline p {
+    font-size: 13px;
+}
+
+
+/* //submission form css */
+.submission-form-input {
+    width: 90%;
+    height: 35vh;
+    padding: 2vh;
+    margin: auto;
+}
+
+.submission-form-input label {
+    color: var(--Selected-Color, #27374D);
+    text-align: justify;
+}
+
+.submission-form-input input {
+    width: 98%;
+    height: 12%;
+    border-radius: 1vh;
+    border: none;
+    outline: none;
+    padding: 1vh;
+    margin: 0.3vh 0 1.7vh;
+    border-radius: 10px;
+    background: var(--Selected-Color, #27374D);
+    color: var(--Background, #F2F2F2);
+}
+
+.submission-form-input input::placeholder {
+    color: var(--Background, #F2F2F2);
+
+}
+
+/* display class are css used to overwrite some css property */
+.display-flex {
+    display: flex;
+    align-items: center;
+    /* justify-content:space-evenly; */
+}
+
+.display-flex img {}
+
+.display-flex h3 {
+    margin: 0 3vh;
+    color: var(--Selected-Color, #27374D);
+    font-family: Quicksand;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.m3 {
+    margin: 3vh 1vh;
+}
+
+.document-upload-btn {
+    width: 90%;
+    height: 9vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed black;
+    margin: 3vh 2vh;
+    border-radius: 1vh;
+    text-align: center;
+    color: #27374D;
+    /* Head */
+}
+
+.submission-form-submit-btn {
+    width: 40vh;
+    height: 7vh;
+    margin: 1vh 9%;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 1vh;
+    background-color: green;
+
+}
+
+/* Help and Support  */
+.help-support-faqs-section::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Hide the track */
+}
+
+.help-support-faqs-section::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Hide the thumb */
+    border: none;
+    /* Hide the border */
+}
+
+.help-support-faqs-section::-webkit-scrollbar {
+    width: 0.5rem;
+    /* Adjust to your desired width */
+    background-color: transparent;
+    /* Hide the background */
+}
+
+.help-support-main-section {
+
+    overflow: hidden;
+}
+
+.help-support-faqs-section {
+    width: 100%;
+    /* padding: 2vh; */
+    overflow: hidden;
+    overflow-x: scroll;
+    height: 40vh;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* background-color: red; */
+    margin: auto;
+    display: flex;
+}
+
+.help-support-faqs-headline {
+    margin: 0 4vh;
+}
+
+.help-support-faq {
+    width: 100vh;
+    height: 34vh;
+    padding: 2vh;
+    margin: 1vh 2vh;
+    border: 1px solid grey;
+    border-radius: 2vh;
+    /* background-color: green; */
+}
+
+.help-support-faq h4 {
+    margin: 1vh 0;
+    width: 35vh;
+}
+
+.help-support-faq p {
+    height: 60%;
+}
+
+.help-support-faq div img {
+    margin: 0 1vh;
+}
+
+.help-support-suggestion-section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2vh;
+    height: 40vh;
+    /* background-color: red; */
+}
+
+.help-support-suggestion-section h4 {
+    margin: 1vh 0;
+}
+
+.help-support-suggestion-section textarea {
+    width: 90%;
+    height: 80%;
+    padding: 2vh;
+    border-radius: 1vh;
+}
+
+.help-support-ContactUs-section h4 {
+    margin: 1vh 2vh;
+}
+
+.contactUs-detail-btn {
+    font-size: 16px;
+    width: 90%;
+    height: 7vh;
+    background-color: #DDE6ED;
+    border-radius: 2vh;
+    display: flex;
+    align-items: center;
+    margin: 2vh auto;
+    padding: 1vh;
+    -webkit-box-shadow: -15px 18px 12px -14px rgba(0, 0, 0, 0.59);
+    -moz-box-shadow: -15px 18px 12px -14px rgba(0, 0, 0, 0.59);
+    box-shadow: -15px 18px 12px -14px rgba(0, 0, 0, 0.59);
+
+    /* justify-content: space-around; */
+}
+
+.contactUs-detail-btn img {
+    margin: 0 2vh;
+}
+
+.contactUs-detail-btn label {
+    width: 30vh;
+}
+
+.contactUs-detail-btn button {
+    /*  */
+    text-align: left;
+    width: 20vh;
+    height: 5vh;
+    border-radius: 4vh;
+    border: none;
+    text-align: center;
+    background-color: #BBDEFB;
+    color: #068FFF;
+
+}
+
+.Notification-main-section {
+    /* overflow: hidden; */
+}
+
+.Notification-headline-section {
+    width: 95%;
+    /* background-color: aqua; */
+    margin: 2vh auto;
+}
+
+.notification-option {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    height: 7vh;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    margin: 1vh 0;
+    display: flex;
+}
+.notification-option::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hiding scrollbar for IE, Edge and Firefox */
+#content {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.notification-option-btn {
+    text-align: center;
+    display: flex;
+    background-color: #27374D;
+    width: 50vh;
+    color: var(--Background, #F9F5F6);
+    text-align: center;
+    /* Body */
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    align-items: center;
+    justify-content: center;
+    height: 1vh;
+    padding: 2vh 5vh;
+    margin: 1vh 1vh;
+    border: 1px solid grey;
+    border-radius: 1vh;
+}
+.Notification-headline-Alerts {
+    margin-top: 3vh;
+    /*  */
+  }
+  .notifcation-message {
+    width: 90%;
+    margin: 2vh auto;
+    height: 100%;
+    border-radius: 1vh;
+    padding: 1vh;
+    border-radius: 10px;
+    background: var(--Container, #dde6ed);
+  }
+  .notificatio-proile-detail {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+  }
+  .notificatio-proile-detail img {
+    margin: 1vh 1vh;
+  }
+  .notificatio-proile-detail h3,
+  .notifcation-message h3 {
+    color: var(--Selected-Color, #27374d);
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .notifcation-message .notification-subheadline {
+    margin: 0.5vh 3vh;
+  }
+  .notification-subheadline:nth-child(3) {
+    margin: 2vh 3vh;
+  }
+.profile-option-section{
+    position: fixed;
+    top: 86%;
+    left: 2vh;
+    /* left: ; */
+    /* margin: auto; */
+}
+ *{
+    margin: 0;
+    padding: 0;
+    
+}
+.profile-main-section{
+width: 100%; 
+height: 720px;
+/* padding: 2vh; */
+overflow: hidden;
+background-color: rgb(244, 245, 245);
+/* background-color: red; */
+color: black;
+}
+.profile-headline-section{
+width: 100%;
+height: 10vh;
+/* background-color:red; */
+padding: 2vh;
+}
+.profile-headline{
+font-size: 20px;
+/* margin: 2vh 0; */
+}
+.profile-headline h2,h3{
+margin: 2vh 0 ;
+}
+.profile-edit-section{
+width: 100%;
+height: 25vh;
+margin:auto;
+display: grid;
+/* place-items: center; */
+}
+.profile-edit-section h2,h3{
+margin:2vh 0;
+}
+.profile-logo{
+width: 10vh;
+height: 10vh;
+/* background-color: green; */
+margin: auto;
+background-size: cover;
+background-image: url("./img/logo.png");
+}
+.profile-edit-headline{
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+margin: 0.5vh 0;
+}
+
+.profile-edit-btn{
+width: 40vh;
+margin: 0.5vh auto;
+height: 4.5vh;
+background-color: black;
+color: white;
+border-radius: 7px;
+border: none;
+}
+.profile-other-main{
+margin: 2vh 0 0 0;
+width: 100%;
+/* height: 100vh; */
+}
+.profile-other-section{
+padding: 2vh 2vh 0;
+display: grid;
+/* place-items: center; */
+}
+.profile-other-section h3{
+font-size: 23px;
+}
+.profile-other-btn{
+width: 43vh;
+display: flex;
+background-color: rgb(222, 235, 235);
+align-items: center;
+/* margin: 0 2vh; */
+padding: 0 1vh;
+height: 6.5vh;
+border-radius: 1vh;
+border: none;
+margin: 1vh auto;
+-webkit-box-shadow: -15px 18px 12px -14px rgba(0,0,0,0.59);
+-moz-box-shadow: -15px 18px 12px -14px rgba(0,0,0,0.59);
+box-shadow: -15px 18px 12px -14px rgba(0,0,0,0.59);
+}
+.help-icon{
+margin: 0 1vh;
+}
+.profile-logout-btn{
+width: 43vh;
+height: 5.7vh;
+margin: 2vh auto;
+border-radius: 1vh;
+background-color: red;
+border: none;
+font-size: 17px;
+color: white;
+}
+.profile-option-section{
+width: 90%;
+margin: auto;
+margin-top: 5vh;
+color: white;
+border-radius: 1.1vh;
+display: flex;
+align-items: center;
+justify-content: space-around;
+height: 7vh;
+background-color: black;
+}
