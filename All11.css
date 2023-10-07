@@ -19,19 +19,18 @@
 
       /* Frame of the Logo */
       .logobox {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       /* Adding the styles to the logo */
       .logo {
-          width: 350px;
-          display: flex;
-          justify-content: center;
-          margin: 20px 0px 20px 0px;
-
+        width: 350px;
+        flex-shrink: 0;
+        justify-content: center;
+        display: flex;
       }
 
       /* Setting the style for all the img tags */
