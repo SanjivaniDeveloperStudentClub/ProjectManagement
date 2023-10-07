@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login Form</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="Styles\All.css" />  
+    <link rel="stylesheet" href="Styles\Typography.css" />  
+  </head>
+
+  <body>
+
+    <!-- DSC LOGO -->
+    <div class="logobox">
+      <div class="logo">
+            <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
+      </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="container">
+      <div class="wrapper">
+        <div class="container-head">
+          <span>Login</span>
+        </div>
+        
+        <form action="home.html">  
+
+          <!-- Name -->
+          <label for="username" class="container-subhead">Full name</label>
+          <input type="text" placeholder="Enter your full name" id="name">
+
+          <!-- Email -->
+          <label for="email" class="container-subhead">Email</label>
+          <input type="text" placeholder="Enter your email id" id="email">
+
+          <!-- Phone no -->
+          <label for="password" class="container-subhead">Contact</label>
+          <input type="password" placeholder="Enter your phone number" id="email">
+
+
+
+          <!-- Forgot password -->
+          <div class="container-label">Forget Password? <a href="ForgotPass.html">Reset Password</a></div>
+          
+          <!-- Submit button -->
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+
+          <!-- Signup -->
+          <div class="container-label">Don't have an account? <a href="NewAcc.html">Create new account</a></div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

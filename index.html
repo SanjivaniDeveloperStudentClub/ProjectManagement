@@ -5,39 +5,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Form | CodingLab</title> 
+     <title>Login Form</title> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <link rel="stylesheet" href="./All.css" />  
+    <link rel="stylesheet" href="Styles\All.css" />  
+    <link rel="stylesheet" href="Styles\Typography.css" />  
   </head>
 
   <body>
 
     <!-- DSC LOGO -->
     <div class="logobox">
-        <div class="logo">
+      <div class="logo">
             <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
-        </div>
+      </div>
     </div>
 
     <!-- Login Container -->
     <div class="container">
       <div class="wrapper">
-        <div class="title">
-          <span>Login Form</span>
+        <div class="container-head">
+          <span>Login</span>
         </div>
         
         <form action="home.html">  
 
           <!-- Email -->
-          <label for="username">Email</label>
-          <input type="text" placeholder="Enter Email" id="username">
+          <label for="username" class="container-subhead">Email</label>
+          <input type="text" placeholder="Enter Email" id="username" class="textfield">
 
           <!-- Password -->
-          <label for="password">Password</label>
+          <label for="password" class="container-subhead">Password</label>
           <input type="password" placeholder="Enter Password" id="password">
 
           <!-- Forgot password -->
-          <div class="pass">Forget Password? <a href="ForgotPass.html">Reset Password</a></div>
+          <div class="container-label">Forget Password? <a href="ForgotPass.html">Reset Password</a></div>
           
           <!-- Submit button -->
           <div class="row button">
@@ -45,7 +46,7 @@
           </div>
 
           <!-- Signup -->
-          <div class="signup-link">Don't have an account? <a href="NewAcc.html">Create new account</a></div>
+          <div class="container-label">Don't have an account? <a href="NewAcc.html">Create new account</a></div>
         </form>
       </div>
     </div>
