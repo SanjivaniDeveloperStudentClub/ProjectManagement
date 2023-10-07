@@ -7,7 +7,7 @@
     --body-background: #F2F2F2;
 
     /* Dark color constant */
-    --dark-color:#27374d;
+    --dark-color: #27374d;
 
     /* Accent color */
     --accent: #068FFF;
@@ -74,8 +74,6 @@ body {
     background: var(--body-background);
 }
 
-
-
 /* Name of the page */
 .wrapper .subtitle {
     padding-top: 20px;
@@ -137,21 +135,21 @@ label {
 input,
 select {
     display: block;
-    
+
     height: 40px;
     width: 100%;
-    
+
     background-color: var(--body-background);
-    
+
     border-radius: 3px;
-    
+
     padding: 0 10px;
     margin-top: 8px;
     margin-bottom: 10px;
-    
+
     font-size: 14px;
     font-weight: 500;
-    
+
     border-top-width: 0px;
     border-left-width: 0px;
     border-bottom-width: 0px;
@@ -318,6 +316,28 @@ form .signup-link a:hover {
     flex-direction: row;
 }
 
+/* Client image */
+.small-logo {
+    flex-shrink: 0;
+    border-radius: 55px;
+}
+
+/* Image stying inside the container */
+.container-img {
+    width: 50px;
+
+    align-items: center;
+}
+
+/* Arranging pfp and name in a row */
+.container-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
 /* Project client name */
 .clientname {
     color: var(--dark-color);
@@ -385,7 +405,7 @@ form .signup-link a:hover {
     }
 }
 
-/* Size of elements on screen size 425px */
+/* Size of elements on screen size 375px */
 @media screen and (max-width: 375px) {
     .top {
         width: 80%;
@@ -404,7 +424,7 @@ form .signup-link a:hover {
     }
 }
 
-/* Size of elements on screen size 425px */
+/* Size of elements on screen size 320px */
 @media screen and (max-width: 320px) {
     .top {
         width: 80%;
@@ -424,6 +444,10 @@ form .signup-link a:hover {
 
     .track {
         font-size: 12px;
+    }
+
+    .small-logo {
+        width: 10px;
     }
 }
 
