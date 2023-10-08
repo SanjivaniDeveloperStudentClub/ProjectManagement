@@ -455,7 +455,6 @@ form .signup-link a:hover {
 /* Arranging pfp and name in a row */
 .container-row {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
 }
 
@@ -468,6 +467,11 @@ form .signup-link a:hover {
     margin-top: 10px;
     margin-left: 15px;
     font-weight: 700;
+}
+
+/* Space between text */
+.space {
+    justify-content: space-between;
 }
 
 /* Text without the margins */
