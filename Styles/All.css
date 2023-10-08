@@ -145,7 +145,7 @@ select {
 
     padding: 0 10px;
     margin-top: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
     font-size: 14px;
     font-weight: 500;
@@ -209,6 +209,120 @@ form .signup-link a:hover {
 
 /* ---------------------------------------------------------- */
 
+/* --------------Dropdown CSS styles-------------------- */
+
+/* Style the custom dropdown container */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+
+    /* margin: 20px; */
+
+    width: 95%;
+}
+
+/* Style the dropdown input (looks like a text field) */
+.dropdown-input {
+
+    width: 100%;
+    padding: 10px;
+    border: 3px solid var(--dark-color);
+    border-radius: 10px;
+    cursor: pointer;
+
+    height: 55px;
+
+    background: url('/images/dropdown.svg') no-repeat right center;
+    /* Customize the icon */
+    background-size: 40px 40px;
+    /* Adjust the icon size */
+    background-position: right 10px center;
+    /* Adjust the icon position */
+    transition: background-image 0.3s ease;
+    /* Add a transition for smooth rotation */
+
+    margin-bottom: -5px;
+
+}
+
+/* background color for input fields */
+.input-bg {
+    background-color: var(--light-color);
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+    background-color: var(--light-color);
+
+    border: 3px solid var(--dark-color);
+    /* border-top: none; */
+
+    max-height: 220px;
+
+    overflow-y: auto;
+    width: 100%;
+
+    border-radius: 10px;
+
+    border-top: none;
+
+
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+
+}
+
+/* Style the dropdown options */
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Show the dropdown content when the container is clicked */
+.custom-dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Rotate the icon when the dropdown is active */
+.custom-dropdown.active .dropdown-input {
+    background-image: url('/images/dropup.svg');
+    /* Customize the rotated icon */
+
+    background-color: var(--light-color);
+
+    border-bottom: none;
+
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+
+/* Background color for dropdown */
+.custom-dropdown.in-active .dropdown-input {
+
+    background-color: var(--light-color);
+
+    /* border-bottom: none;
+
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; */
+}
+
+/* Z index of drop down when active */
+.custom-dropdown.active {
+    z-index: 10;
+}
+
+/* Z index of drop down when in-active */
+.custom-dropdown.in-active {
+    z-index: 0;
+}
+
+
+/* ------------------------------------------------- */
 
 
 /* ------------------HOME PAGE------------------------ */
@@ -310,6 +424,7 @@ form .signup-link a:hover {
     box-shadow: var(--box-shadow);
 }
 
+
 /* Client text frame */
 .head {
     display: flex;
@@ -322,6 +437,14 @@ form .signup-link a:hover {
     border-radius: 55px;
 }
 
+/* Client image */
+.medium-logo {
+    width: 150px;
+    flex-shrink: 0;
+    justify-content: center;
+    display: flex;
+}
+
 /* Image stying inside the container */
 .container-img {
     width: 50px;
@@ -332,9 +455,8 @@ form .signup-link a:hover {
 /* Arranging pfp and name in a row */
 .container-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    
 }
 
 
@@ -346,6 +468,25 @@ form .signup-link a:hover {
     margin-top: 10px;
     margin-left: 15px;
     font-weight: 700;
+}
+
+/* Text without the margins */
+.container-text {
+    color: var(--dark-color);
+
+    
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    /* height: 100vh;  */
+
+    text-align: left;
+    
+    /* font-size: 16px; */
+    margin-top: 10px;
+
+    margin-left: 15px;
+    /* font-weight: 700; */
 }
 
 /* Head text style */
@@ -363,6 +504,89 @@ form .signup-link a:hover {
     color: var(--dark-color);
     /* padding: 20px; */
 }
+
+/* Adds the space between elements */
+.space {
+    justify-content: space-between;
+}
+
+
+/* Filter tabs buttons */
+
+/* Project and staff tab button */
+.tab-container {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 0px; */
+
+    overflow-x: auto;
+    white-space: nowrap;
+
+    /* Hide the horizontal scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+
+}
+
+/* Remove scrollbar from horizontal scrolling tabs */
+.tab-container::-webkit-scrollbar {
+    width: 0; /* Webkit-based browsers */
+}
+
+/* Horizontal tabs */
+.tabs {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Tabs style */
+.tab {
+    width: auto;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    /* padding: 3px 40px; */
+    margin: 10px 10px 10px 0;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    border: solid 2px var(--dark-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Active tab style */
+.tab.active {
+  background-color: var(--dark-color);
+  color: var(--body-background);
+}
+
+/* Full width button */
+
+.edit-button {
+    height: 40px;
+    width: 100%;
+
+    outline: none;
+    /* padding-left: 60px; */
+    border-radius: 10px;
+    border: 0px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center;
+    align-items: center;
+    text-align: center; */
+
+    color: var(--body-background);
+    background-color: var(--dark-color);
+    box-shadow: var(--box-shadow);
+}
+
 
 /* Navigation bar style */
 .bnav {
@@ -422,6 +646,10 @@ form .signup-link a:hover {
     .wrapper .head .small-logo {
         width: 60px;
     }
+
+    /* .medium-logo {
+        width: 60px;
+    } */
 }
 
 /* Size of elements on screen size 320px */
@@ -447,7 +675,7 @@ form .signup-link a:hover {
     }
 
     .small-logo {
-        width: 10px;
+        width: auto;
     }
 }
 

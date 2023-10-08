@@ -14,7 +14,32 @@
 
 }
 
-/* Center heading for container */
+/* Large center heading for container */
+.container-large-head {
+    display: flex;
+    /* width: 288px;
+    height: 32px; */
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color:  var(--dark-color);
+    text-align: center;
+    /* Head */
+    font-family: Quicksand;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    width: 100%;
+}
+
+
+/* Heading for container */
 .container-head {
     display: flex;
     /* width: 288px;
@@ -53,6 +78,19 @@
 }
 
 /* Small text on the container */
+.container-body {
+    color: var(--dark-color);
+    font-family: Quicksand;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-top: 10px;
+    /* margin-bottom: 5px; */
+}
+
+/* Small text on the container */
 .container-label {
     color: var(--dark-color);
     font-family: Quicksand;
@@ -88,7 +126,7 @@
         font-size: 20px;
     }
 
-    .container-label {
+    .container-body {
         font-size: 16px;
     }
 
@@ -107,7 +145,7 @@
         font-size: 18px;
     }
 
-    .container-label {
+    .container-body {
         font-size: 16px;
     }
 
@@ -126,7 +164,7 @@
         font-size: 16px;
     }
 
-    .container-label {
+    .container-body {
         font-size: 14px;
     }
 

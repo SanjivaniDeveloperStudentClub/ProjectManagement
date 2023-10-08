@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form</title>
+  <title>Register organization</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="stylesheet" href="Styles\All.css" />
   <link rel="stylesheet" href="Styles\Typography.css" />
@@ -24,35 +24,31 @@
   <div class="container">
     <div class="wrapper">
       <div class="container-large-head">
-        <span>Register</span>
+        <span>Organization</span>
       </div>
 
-      <form action="organization.html">
+      <form action="home.html">
 
         <!-- Name -->
-        <label for="username" class="container-subhead">Full name</label>
-        <input type="text" placeholder="Enter your full name" id="name">
+        <label for="Org-name" class="container-subhead">Organization Name</label>
+        <input type="text" placeholder="Enter organization name" id="name">
 
         <!-- Email -->
-        <label for="email" class="container-subhead">Email</label>
-        <input type="text" placeholder="Enter your email id" id="email">
+        <label for="Org-email" class="container-subhead">Email</label>
+        <input type="email" placeholder="Enter email id" id="email">
 
-        <!-- Phone no -->
-        <label for="Contact" class="container-subhead">Contact</label>
+        <!-- helpline no -->
+        <label for="Org-Contact" class="container-subhead">Helpline</label>
         <input type="tel" placeholder="Enter your phone number" id="Contact">
-
-        <!-- Password -->
-        <label for="password" class="container-subhead">Password</label>
-        <input type="password" placeholder="Enter password" id="password">
-
-        <!-- confirm password -->
-        <label for="password" class="container-subhead">Confirm password</label>
-        <input type="password" placeholder="Confirm password" id="password">
 
         <!-- Submit button -->
         <div class="row button">
-          <input type="submit" value="Sign up" style="margin-top: 20px;">
+          <input type="submit" value="Register" style="margin-top: 20px;">
         </div>
+
+        <!-- join an existing organization -->
+        <div class="container-label">Join an existing organization? <a href="organization.html">Join organization</a></div>
+
       </form>
     </div>
   </div>
