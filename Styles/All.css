@@ -653,6 +653,7 @@ form .signup-link a:hover {
 }
 
 /* Size of elements on screen size 320px */
+/* Size of elements on screen size 320px */
 @media screen and (max-width: 320px) {
     .top {
         width: 80%;
@@ -833,7 +834,6 @@ form .signup-link a:hover {
     /* justify-content:space-evenly; */
 }
 
-.display-flex img {}
 
 .display-flex {
     margin: 0 3vh;

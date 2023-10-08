@@ -1,0 +1,136 @@
+/* CSS constants */
+:root {
+    /* Color const for background */
+    --body-background: #F2F2F2;
+
+    /* Dark color constant */
+    --dark-color: #27374d;
+
+    /* Accent color */
+    --accent: #068FFF;
+
+    /* Light color for containers */
+    --light-color: #DDE6ED;
+
+}
+
+/* Center heading for container */
+.container-head {
+    display: flex;
+    /* width: 288px;
+    height: 32px; */
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color:  var(--dark-color);
+    text-align: center;
+    /* Head */
+    font-family: Quicksand;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-bottom: 20px;
+
+    width: 100%;
+}
+
+/* Left aligned sub-heading for container */
+.container-subhead {
+    color: var(--dark-color);
+
+    /* Body */
+    font-family: Quicksand;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+/* Small text on the container */
+.container-label {
+    color: var(--dark-color);
+    font-family: Quicksand;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-top: 10px;
+    /* margin-bottom: 5px; */
+}
+
+.large-head {
+    color: var(--dark-color);
+
+    /* BIG body */
+    font-family: Quicksand;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+
+/* Size of fonts on screen size 425px */
+@media screen and (max-width: 425px) {
+    .container-head {
+        font-size: 22px;
+    }
+
+    .container-subhead {
+        font-size: 20px;
+    }
+
+    .container-label {
+        font-size: 16px;
+    }
+
+    .large-head {
+        font-size: 34px;
+    }
+}
+
+/* Size of fonts on screen size 375px */
+@media screen and (max-width: 375px) {
+    .container-head {
+        font-size: 18px;
+    }
+
+    .container-subhead {
+        font-size: 18px;
+    }
+
+    .container-label {
+        font-size: 16px;
+    }
+
+    .large-head {
+        font-size: 32px;
+    }
+}
+
+/* Size of fonts on screen size 320px */
+@media screen and (max-width: 320px) {
+    .container-head {
+        font-size: 16px;
+    }
+
+    .container-subhead {
+        font-size: 16px;
+    }
+
+    .container-label {
+        font-size: 14px;
+    }
+
+    .large-head {
+        font-size: 24px;
+    }
+}
