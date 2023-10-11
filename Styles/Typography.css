@@ -38,6 +38,26 @@
     width: 100%;
 }
 
+/* Medium Heading for container */
+.container-medhead {
+    display: flex;
+    /* width: 288px;
+    height: 32px; */
+    justify-content: center;
+    flex-shrink: 0;
+
+    text-align: center;
+    /* Head */
+    font-family: Quicksand;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-bottom: 20px;
+
+    width: 100%;
+}
 
 /* Heading for container */
 .container-head {
@@ -68,9 +88,9 @@
 
     /* Body */
     font-family: Quicksand;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     line-height: normal;
 
     margin-top: 10px;
@@ -81,7 +101,7 @@
 .container-body {
     color: var(--dark-color);
     font-family: Quicksand;
-    font-size: 12px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;

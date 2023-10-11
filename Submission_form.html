@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,60 +5,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./All.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="Styles\All.css" />
+    <link rel="stylesheet" href="Styles\Typography.css" />
+    <title>Project submission</title>
     <style>
-      
+
     </style>
 </head>
 
 <body>
-    <div class="submission-form-main-section">
-        <div class="backward-arrow-icon display-flex m3">
-            <img width="35" height="35"
-                src="./img/Back.svg" alt="circled-left-2" />
-            <h3>Project Submission</h3>
-        </div>
-        <div class="submission-form-input font-style-Quicksand">
-            <label>Name - </label><br>
-            <input type="text" placeholder="Enter Name">
-            <br>
-            <label>Estimated Completion - </label><br>
-            <input type="date" placeholder="Enter Estimated Completion">
-            <br>
-            <label>Estimated Cost - </label><br>
-            <input type="text" placeholder="Enter Estimated Cost">
-            <br>
-        </div>
-        <div class="project-information-section" contenteditable="true">The project aims to develop an innovative online platform that offers
-            visual monitoring and real-time alerts for tracking project progress. This platform will revolutionize
-            project management by providing stakeholders with a comprehensive view of project status through intuitive
-            visualizations, charts, graphs, and dashboards. Additionally, the system will feature an advanced alerting
-            mechanism that promptly notifies relevant stakeholders about any deviations from project plans or potential
-            risks.</div>
-        <h4 class="NDetail-project-title fs-2x">Requirements</h4>
+    <div class="container">
 
-        <div class="project-requirement-section" contenteditable="true">The user profile platform aims to develop a comprehensive system to
-            facilitate various activities related to project management. The platform will enable users to add, update,
-            and track project details, provide real-time alerts to relevant stakeholders about project progress,
-            visually display project delays, and generate detailed reports. The software will enforce strict access
-            control based on user profiles to ensure data security and confidentiality</div>
-
-
-        <h4 class="NDetail-project-title fs-2x">Documents</h4>
-        <div class="Ndetail-project-document">
-            <div class="document-type-icon"><img width="30" height="30" src="https://img.icons8.com/color/48/pdf.png"
-                    alt="pdf" /></div>
-            <div class="document-name-size">
-                <p>Documentation.pdf</p>
-                <p>Size:-2mb</p>
+        <!-- Back button with page name -->
+        <nav class="top">
+            <a href="profile.html">
+                <div class="small-circle" style="margin-right: 20px;">
+                    <img src="img\Back.png" alt="Back arrow">
+                </div>
+            </a>
+            <div class="large-head">
+                <div name="title">Project</div>
             </div>
-            <div class="download-icon"><img width="30" height="30"
-                    src="https://img.icons8.com/material-rounded/24/download--v1.png" alt="download--v1" /></div>
+        </nav>
+
+        <div class="container">
+            <label class="container-subhead">Title - </label>
+            <input type="text" placeholder="Enter Name" class="custom-textfield">
+            <br>
+            <label class="container-subhead">Estimated Completion - </label>
+            <input type="date" class="custom-textfield">
+            <br>
+            <label class="container-subhead">Estimated Cost - </label>
+            <input type="text" placeholder="Estimated cost" class="custom-textfield">
+            <br>
+
+            <label class="container-subhead" style="margin-bottom: 10px;">Summary - </label>
+            <textarea class="custom-textarea" placeholder="Enter short summary of your project..."></textarea>
+
+            <br>
+
+            <label class="container-subhead" style="margin-bottom: 10px;">Details - </label>
+            <textarea class="custom-textarea" placeholder="Enter detailed description of your project..."></textarea>
+
+            <br>
+
+            <label class="container-subhead" style="margin-bottom: 10px;">Requirements - </label>
+            <textarea class="custom-textarea" placeholder="Enter requirements of your project..."></textarea>
+
+            <br>
+
+            <label class="container-subhead" style="margin-bottom: 10px;">Documents - </label>
+
+            <div class="wrapper">
+                <div class="container-row">
+                    <div class="small-logo">
+                        <img src="img\pdf.svg" alt="pdf_logo" style="width: 30px;">
+                    </div>
+                    <!-- <div class="clientname" > -->
+                    <div class="container-text">
+                        <p class="container-head">Documentation</p>
+                    </div>
+
+                    <div style="margin-left: auto; margin-right: 10px; align-items: end; align-content: end;">
+                        <img src="img\black-cross.svg" alt="Cross arrow">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
         </div>
-        <label class="document-upload-btn font-style-Quicksand" for="document-data">Upload Document</label>
-        <input style="display: none;" type="file" id="document-data">
-        <button style="background-color:#56a9f7 ; color:#F2F2F2;" class="submission-form-submit-btn font-style-Quicksand">Submit</button>
+
+            <form action="home.html">
+                <div class="logout" style="margin-bottom: 30px;">
+                    <input type="submit" value="Submit" class="safe-button container-medhead">
+                </div>
+            </form>
+
+        
     </div>
 </body>
+
 </html>

@@ -15,6 +15,9 @@
     /* Light color for containers */
     --light-color: #DDE6ED;
 
+    /* Red color for danger CTA */
+    --red: #DD0000;
+
     /* Constants for box shadow */
     --box-shadow: -4px 8px 10px -5px rgba(0, 0, 0, 0.20);
 
@@ -33,6 +36,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    /* overflow-x: hidden; */
 }
 
 
@@ -122,6 +126,39 @@ form .row input:focus {
 /* form .row input::placeholder {
     color: #ffffff;
 } */
+
+
+/* CSS for the textarea */
+.custom-textarea {
+    width: 95%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none; /* Prevent resizing */
+    outline: none; /* Remove the outline when focused */
+    box-shadow: var(--box-shadow);
+}
+
+/* CSS for the textfield */
+.custom-textfield {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none; /* Prevent resizing */
+    outline: none; /* Remove the outline when focused */
+    box-shadow: var(--box-shadow);
+}
+
+
+/* Style the placeholder text */
+.custom-textarea::placeholder {
+    color: #aaa;
+}
 
 /* Styles for the text above the text-field */
 label {
@@ -334,13 +371,13 @@ form .signup-link a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px auto 20px;
+    margin: 20px;
 }
 
 /* Title text style */
 .top .large-head {
     padding-top: 10px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
 
     width: 360px;
     height: 8vh;
@@ -348,6 +385,20 @@ form .signup-link a:hover {
     justify-content: space-between;
     align-items: center;
     margin: 20px auto 20px;
+}
+
+/* Background for icons */
+.small-circle {
+    height: 40px;
+    width: 40px;
+
+    background-color: var(--dark-color);
+
+    border-radius: 50px;
+
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
 }
 
 /* Search button Frame size */
@@ -360,13 +411,8 @@ form .signup-link a:hover {
     cursor: pointer;
 }
 
-/* Search button size */
-.fa-5x {
-    font-size: 1.2em;
-}
-
 /* Search button style */
-.circle-icon {
+/* .circle-icon {
     background: var(--dark-color);
     width: 40px;
     height: 40px;
@@ -376,7 +422,7 @@ form .signup-link a:hover {
     vertical-align: middle;
     padding: 0px;
     margin-top: 10px;
-}
+} */
 
 /* Project and staff tab button */
 .top_btn {
@@ -591,6 +637,51 @@ form .signup-link a:hover {
     box-shadow: var(--box-shadow);
 }
 
+
+/* Style for the logout button */
+.logout {
+
+    max-width: 440px;
+    padding: 0 20px;
+    margin: 0px auto;
+
+    height: 70px;
+
+    margin-top: 30px;
+
+    /* background-color: var(--red); */
+
+    /* width: 90%; */
+
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+/* blue button with white text */
+.safe-button {
+    background-color: var(--accent);
+    width: 100%;
+    height: 100%;
+
+    border-radius: 10px;
+
+    color: var(--body-background);
+}
+
+
+/* Red button with white text */
+.danger-button {
+    background-color: var(--red);
+    width: 100%;
+    height: 100%;
+
+    border-radius: 10px;
+
+    color: var(--body-background);
+    
+}
 
 /* Navigation bar style */
 .bnav {
@@ -879,20 +970,21 @@ form .signup-link a:hover {
 
 }
 
+
 /* Help and Support  */
-.help-support-faqs-section::-webkit-scrollbar-track {
+.faq-container::-webkit-scrollbar-track {
     background-color: transparent;
     /* Hide the track */
 }
 
-.help-support-faqs-section::-webkit-scrollbar-thumb {
+.faq-container::-webkit-scrollbar-thumb {
     background-color: transparent;
     /* Hide the thumb */
     border: none;
     /* Hide the border */
 }
 
-.help-support-faqs-section::-webkit-scrollbar {
+.faq-container::-webkit-scrollbar {
     width: 0.5rem;
     /* Adjust to your desired width */
     background-color: transparent;
@@ -904,7 +996,7 @@ form .signup-link a:hover {
     overflow: hidden;
 }
 
-.help-support-faqs-section {
+.faq-container {
     width: 100%;
     /* padding: 2vh; */
     overflow: hidden;
@@ -921,7 +1013,7 @@ form .signup-link a:hover {
     margin: 0 4vh;
 }
 
-.help-support-faq {
+.faq-tab {
     width: 100vh;
     height: 34vh;
     padding: 2vh;
@@ -931,16 +1023,83 @@ form .signup-link a:hover {
     /* background-color: green; */
 }
 
-.help-support-faq h4 {
+.faq-tab h4 {
     margin: 1vh 0;
     width: 35vh;
 }
 
-.help-support-faq p {
+.faq-tab p {
     height: 60%;
 }
 
-.help-support-faq div img {
+.faq-tab div img {
+    margin: 0 1vh;
+}
+
+
+
+/* Help and Support  */
+.faq-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Hide the track */
+}
+
+.faq-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Hide the thumb */
+    border: none;
+    /* Hide the border */
+}
+
+.faq-container::-webkit-scrollbar {
+    width: 0.5rem;
+    /* Adjust to your desired width */
+    background-color: transparent;
+    /* Hide the background */
+}
+
+.help-support-main-section {
+
+    overflow: hidden;
+}
+
+.faq-container {
+    width: 100%;
+    /* padding: 2vh; */
+    overflow: hidden;
+    overflow-x: scroll;
+    height: 40vh;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* background-color: red; */
+    margin: auto;
+    display: flex;
+}
+
+.help-support-faqs-headline {
+    margin: 0 4vh;
+}
+
+.faq-tab {
+    width: 100vh;
+    height: 34vh;
+    padding: 2vh;
+    margin: 1vh 2vh;
+    border: 1px solid grey;
+    border-radius: 2vh;
+    /* background-color: green; */
+}
+
+.faq-tab h4 {
+    margin: 1vh 0;
+    width: 35vh;
+}
+
+.faq-tab p {
+    height: 60%;
+}
+
+.faq-tab div img {
     margin: 0 1vh;
 }
 
