@@ -43,10 +43,11 @@
     display: flex;
     /* width: 288px;
     height: 32px; */
-    justify-content: center;
+
+    color: var(--dark-color);
+
     flex-shrink: 0;
 
-    text-align: center;
     /* Head */
     font-family: Quicksand;
     font-size: 28px;

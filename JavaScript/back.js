@@ -1,4 +1,4 @@
-function goBack() {
+document.getElementById('backButton').addEventListener('click', function () {
     const previousPage = localStorage.getItem('previousPage');
     if (previousPage) {
         // Redirect to the previous page
@@ -8,4 +8,4 @@ function goBack() {
         // For example, return to the app's main page
         window.location.href = 'index.html'; // Replace with your main page URL
     }
-}
+});

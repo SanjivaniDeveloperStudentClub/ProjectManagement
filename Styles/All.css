@@ -44,6 +44,14 @@ body {
     background: var(--dark-color);
 }
 
+/* Style for br tag */
+br {
+    content: "";
+  display: block;
+  margin: 1.5em;
+}
+
+
 /* Frame of the Logo */
 .logobox {
     display: flex;
@@ -493,7 +501,7 @@ form .signup-link a:hover {
 
 /* Image stying inside the container */
 .container-img {
-    width: 50px;
+    width: 60px;
 
     align-items: center;
 }
@@ -638,6 +646,32 @@ form .signup-link a:hover {
 }
 
 
+/* Style for bottom floating action button */
+.fab {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+
+    background-color: var(--dark-color);
+    color: var(--body-background);
+    
+    width: 60px;
+    height: 60px;
+    
+    border-radius: 50%;
+    
+    font-size: 40px;
+    text-align: center;
+    line-height: 60px;
+    
+    font-weight: 700;
+    
+    cursor: pointer;
+    
+    box-shadow: var(--box-shadow);
+}
+
+
 /* Style for the logout button */
 .logout {
 
@@ -669,6 +703,7 @@ form .signup-link a:hover {
 
     color: var(--body-background);
 }
+
 
 
 /* Red button with white text */
@@ -739,7 +774,7 @@ form .signup-link a:hover {
     }
 
     .wrapper .head .small-logo {
-        width: 60px;
+        width: 70px;
     }
 
     /* .medium-logo {
@@ -747,7 +782,6 @@ form .signup-link a:hover {
     } */
 }
 
-/* Size of elements on screen size 320px */
 /* Size of elements on screen size 320px */
 @media screen and (max-width: 320px) {
     .top {
@@ -773,6 +807,11 @@ form .signup-link a:hover {
     .small-logo {
         width: auto;
     }
+
+    /* .fab {
+        height: 40;
+        width: 40;
+    } */
 }
 
 /* ----------------------------------------------------- */
