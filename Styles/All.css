@@ -44,11 +44,37 @@ body {
     background: var(--dark-color);
 }
 
+
+/* Styling for anchor tag */
+a {
+    text-decoration: none;
+}
+
 /* Style for br tag */
 br {
     content: "";
   display: block;
   margin: 1.5em;
+}
+
+/* Style for table */
+table {
+    width: 100%;
+
+    margin: 10px 0 5px 0;
+}
+
+/* Style for button in table */
+.small-button {
+    height: 30px;
+    width: auto;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    
 }
 
 
@@ -214,9 +240,9 @@ select {
 }
 
 /* When clicked the link, it turns to the underlined text */
-.wrapper form .container-label a:hover {
+/* .wrapper form .container-label a:hover {
     text-decoration: underline;
-}
+} */
 
 /* Styles for the login button */
 .wrapper form .button input {
@@ -230,27 +256,27 @@ select {
 }
 
 /* Background color for the lgin button */
-form .button input:hover {
+/* form .button input:hover {
     background: var(--accent);
-}
+} */
 
 /* Signup button */
-.wrapper form .signup-link {
+/* .wrapper form .signup-link {
     text-align: center;
     margin-top: 20px;
     font-size: 13px;
-}
+} */
 
 /* Signup ling color */
-.wrapper form .signup-link a {
+/* .wrapper form .signup-link a {
     color: var(--accent);
     text-decoration: none;
-}
+} */
 
 /* When clicked signup text turns gets underline */
-form .signup-link a:hover {
+/* form .signup-link a:hover {
     text-decoration: underline;
-}
+} */
 
 /* ---------------------------------------------------------- */
 

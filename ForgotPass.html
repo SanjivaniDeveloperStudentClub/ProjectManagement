@@ -1,1 +1,71 @@
-<!-- Create a forgot password page -->
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="Styles\All.css" />
+    <link rel="stylesheet" href="Styles\Typography.css" />
+
+    <style>
+        /* CSS constants */
+        :root {
+
+            /* Accent color */
+            --accent: #068FFF;
+
+            /* Constants for box shadow */
+            --box-shadow: -4px 8px 10px -5px rgba(0, 0, 0, 0.20);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- DSC LOGO -->
+    <div class="logobox">
+        <div class="logo">
+            <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="container">
+        <div class="wrapper">
+            <div class="container-large-head">
+                <span>Reset Password</span>
+            </div>
+
+            <form action="organization.html">
+
+                <!-- Email -->
+                <label for="email" class="container-subhead">Email</label>
+                <input type="text" placeholder="Enter your email id" id="email">
+
+                <!-- OTP -->
+                <label for="OTP" class="container-subhead">OTP</label>
+
+                <div class="container-row">
+                    <input type="tel" placeholder="Enter OTP sent on your email" maxlength="6" id="OTP">
+                    <input type="button" value="Get OTP"  style="width: 30; background-color: var(--accent); color: var(--body-background);">
+                </div>
+
+                <!-- Submit button -->
+                <div class="row button">
+                    <input type="submit" value="Reset Password" style="margin-top: 20px;">
+                </div>
+
+                <!-- Signup -->
+                <div class="container-label">Remember your password? <a href="index.html">Login existing account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

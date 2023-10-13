@@ -94,15 +94,15 @@
     font-weight: 800;
     line-height: normal;
 
-    margin-top: 10px;
-    margin-bottom: 0px;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
 }
 
 /* Small text on the container */
 .container-body {
     color: var(--dark-color);
     font-family: Quicksand;
-    font-size: 10px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -115,7 +115,7 @@
 .container-label {
     color: var(--dark-color);
     font-family: Quicksand;
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
