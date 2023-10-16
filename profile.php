@@ -26,7 +26,7 @@
         </nav>
 
         <!-- Home page body -->
-   
+        <div class="container">
 
             <!-- Profile Overview Container -->
             <div class="logobox">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <a href="EditProfile.html">
+        <a href="EditProfile.php">
             <!-- Submit button -->
             <div class="container">
                 <input type="button" value="Edit Profile" class="edit-button">
@@ -59,7 +59,7 @@
 
         <div class="container">
 
-            <a href="dashboard.html">
+            <a href="dashboard.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -81,7 +81,7 @@
 
         <div class="container">
 
-            <a href="Help_Support.html">
+            <a href="Help_Support.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -95,7 +95,7 @@
                 </div>
             </a>
 
-            <a href="About.html">
+            <a href="About.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -112,7 +112,7 @@
         </div>
 
 
-        <form action="index.html">
+        <form action="index.php">
             <div class="logout" style="margin-bottom: 100px;">
                 <input type="submit" value="Logout" class="danger-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
             </div>
@@ -121,14 +121,14 @@
         <!-- Bottom Navigation Bar -->
         <div class="bnav-wrapper">
             <div class="bnav">
-                <a href="Home.html"><img src="images/home.svg" alt="Home"></a>
-                <a href="Logs.html"><img src="images/Logs.svg" alt="Logs"></a>
-                <a href="Notification.html"><img src="images/Notification.svg" alt="Notifications"></a>
-                <a href="Profile.html">Profile</a>
+                <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
+                <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
+                <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
+                <a href="Profile.php">Profile</a>
             </div>
         </div>
 
- 
+    </div>
 
 
 </body>

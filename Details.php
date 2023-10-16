@@ -19,7 +19,7 @@
     <div class="container">
 
         <nav class="top">
-            <a href="home.html">
+            <a href="home.php">
                 <div class="small-circle" style="margin-right: 20px;">
                     <img src="img\Back.png" alt="Back arrow">
                 </div>

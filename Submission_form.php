@@ -16,7 +16,7 @@
 
         <!-- Back button with page name -->
         <nav class="top">
-            <a href="home.html">
+            <a href="home.php">
                 <div class="small-circle" style="margin-right: 20px;">
                     <img src="img\Back.png" alt="Back arrow">
                 </div>
@@ -74,7 +74,7 @@
 
         </div>
 
-        <form action="home.html">
+        <form action="home.php">
             <div class="logout" style="margin-bottom: 30px;">
                 <input type="submit" value="Submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
             </div>

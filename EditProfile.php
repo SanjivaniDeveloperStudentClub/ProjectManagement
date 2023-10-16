@@ -33,7 +33,7 @@
     <div class="container">
 
         <nav class="top">
-            <a href="profile.html">
+            <a href="profile.php">
                 <div class="small-circle" style="margin-right: 20px;">
                     <img src="img\Back.png" alt="Back arrow">
                 </div>
@@ -140,7 +140,7 @@
         <br>
         <br>
 
-        <form action="profile.html">
+        <form action="profile.php">
             <div class="logout" style="margin-bottom: 30px;">
                 <input type="submit" value="Submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
             </div>
