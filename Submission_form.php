@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = $conn->query($check_query);
 
     
-            $sql = "INSERT INTO Project(project_id,project_name,estimated_completion,cost,summary,details,requirements) VALUES (1,'$name' ,'$Estimated_Completion', '$Estimated_Cost','$Summary','$Details')";
+            $sql = "INSERT INTO Project(project_id,project_name,estimated_completion,cost,summary,details,requirements) VALUES (1,'$name' ,'$Estimated_Completion', '$Estimated_Cost','$Summary','$Details','$Requirements')";
 }
 // Close the database connection (optional)
 $conn->close();
