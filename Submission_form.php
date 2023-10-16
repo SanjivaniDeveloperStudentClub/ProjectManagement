@@ -1,3 +1,25 @@
+<?php
+require_once "db_connection.php"; // Include the database connection file
+
+$_SERVER["REQUEST_METHOD"] == "POST" 
+    // Retrieve data from the form
+    $name = $_POST["name"];
+    $Estimated_Completion = $_POST["Estimated_Completion"];
+    $Estimated_Cost = $_POST["Esitimated_cost"];
+    $Summary = $_POST["Summary"];
+    $Details = $_POST["Details"];
+    $Requirements = $_POST["Requirements"];
+
+    $check_query = "SELECT * FROM Project";
+    $result = $conn->query($check_query);
+
+    
+            $sql = "INSERT INTO Project(project_id,project_name,estimated_completion,cost,summary,details,requirements) VALUES (1,'$name' ,'$Estimated_Completion', '$Estimated_Cost','$Summary','$Details')";
+
+// Close the database connection (optional)
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,32 +49,34 @@
         </nav>
 
         <div class="container">
-            <label class="container-subhead">Title - </label>
+        <form action="Submission_form.php" method="post">
+            <label for ="name" class="container-subhead">Title - </label>
             <input type="text" placeholder="Enter Name" class="custom-textfield">
             <br>
-            <label class="container-subhead">Estimated Completion - </label>
+            <label for ="Estimated_Completion" class="container-subhead">Estimated Completion - </label>
             <input type="date" class="custom-textfield">
             <br>
-            <label class="container-subhead">Estimated Cost - </label>
+            <label for ="Estimated_Cost" class="container-subhead">Estimated Cost - </label>
             <input type="text" placeholder="Estimated cost" class="custom-textfield">
             <br>
 
-            <label class="container-subhead" style="margin-bottom: 10px;">Summary - </label>
+            <label for ="Summary" class="container-subhead" style="margin-bottom: 10px;">Summary - </label>
             <textarea class="custom-textarea" placeholder="Enter short summary of your project..."></textarea>
 
             <br>
 
-            <label class="container-subhead" style="margin-bottom: 10px;">Details - </label>
+            <label for ="Details" class="container-subhead" style="margin-bottom: 10px;">Details - </label>
             <textarea class="custom-textarea" placeholder="Enter detailed description of your project..."></textarea>
 
             <br>
 
-            <label class="container-subhead" style="margin-bottom: 10px;">Requirements - </label>
+            <label for ="Requirements" class="container-subhead" style="margin-bottom: 10px;">Requirements - </label>
             <textarea class="custom-textarea" placeholder="Enter requirements of your project..."></textarea>
 
             <br>
 
             <label class="container-subhead" style="margin-bottom: 10px;">Documents - </label>
+        </form>
 
             <div class="wrapper">
                 <div class="container-row">
