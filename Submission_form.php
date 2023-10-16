@@ -1,7 +1,7 @@
 <?php
 require_once "db_connection.php"; // Include the database connection file
 
-$_SERVER["REQUEST_METHOD"] == "POST" 
+if($_SERVER["REQUEST_METHOD"] == "POST"){ 
     // Retrieve data from the form
     $name = $_POST["name"];
     $Estimated_Completion = $_POST["Estimated_Completion"];
@@ -15,7 +15,7 @@ $_SERVER["REQUEST_METHOD"] == "POST"
 
     
             $sql = "INSERT INTO Project(project_id,project_name,estimated_completion,cost,summary,details,requirements) VALUES (1,'$name' ,'$Estimated_Completion', '$Estimated_Cost','$Summary','$Details')";
-
+}
 // Close the database connection (optional)
 $conn->close();
 ?>
