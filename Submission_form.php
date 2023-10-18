@@ -3,7 +3,6 @@
 require "./db_connection.php";
 if(isset($_POST["submit"])){
     $currentDate = date('Y-m-d'); // Format: Year-Month-Day
-
     // Get form data
     $title = $_POST['title'];
     $estimated_completion = $_POST['estimated_completion'];
