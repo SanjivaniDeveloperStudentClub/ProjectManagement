@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Styles\All.css" />
     <link rel="stylesheet" href="Styles\Typography.css" />
 
-    <title>Home</title>
+    <title>Logs</title>
 
 </head>
 
@@ -20,23 +20,30 @@
             <div class="large-head">
                 <div name="title">Project</div>
             </div>
+
             <div class="small-circle">
                 <img src="img\search.png" alt="Back arrow">
             </div>
         </nav>
-    </div>
 
-    <!-- Home page body -->
-    <div class="container">
+        <!-- Home page body -->
+        <!-- <div class="container"> -->
 
-        <!-- Project and Staff tab -->
-        <div class="top_btn">
-            <button class="active_btn" id="btn1" onclick="window.location.href='home.html'">Project</button>
-            <button class="inactive_btn" id="btn2" onclick="window.location.href='Staff.html'">Staff</button>
-        </div>
+            <!-- Project and Staff tab -->
+            <div class="tab-container">
+                <div class="tabs" id="tabs">
+                    <button class="tab active" data-tab="all">All</button>
+                    <button class="tab" data-tab="approved">Approved</button>
+                    <button class="tab" data-tab="disapproved">Disapproved</button>
+                    <button class="tab" data-tab="action">Action Required</button>
+                    <button class="tab" data-tab="updated">Updated</button>
+                </div>
+            </div>
 
-        <!-- Project Overview Container -->
-        <a href="Details.html">
+            <script src="JavaScript\dragtabs.js"></script>
+
+            <!-- Project Overview Container -->
+        <a href="Details.php">
             <div class="wrapper">
                 <div class="container-row">
                     <div class="small-logo">
@@ -93,25 +100,19 @@
             </div>
         </a>
 
-        <a href="Submission_form.html">
-            <div class="container">
-                <button id="fab" class="fab">+</button>
+            <!-- Bottom Navigation Bar -->
+            <div class="bnav-wrapper">
+                <div class="bnav">
+                    <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
+                    <a href="Logs.php">Logs</a>
+                    <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
+                    <a href="Profile.php"><img src="images/Profile.svg" alt="Profile"></a>
+                </div>
             </div>
-        </a>
-
-        <!-- Bottom Navigation Bar -->
-        <div class="bnav-wrapper">
-            <div class="bnav">
-                <a href="">Home</a>
-                <a href="Logs.html"><img src="images/Logs.svg" alt="Logs"></a>
-                <a href="Notification.html"><img src="images/Notification.svg" alt="Notifications"></a>
-                <a href="Profile.html"><img src="images/Profile.svg" alt="Profile"></a>
-            </div>
-        </div>
 
 
+        <!-- </div> -->
     </div>
-
 
 </body>
 

@@ -19,7 +19,7 @@
 
         <!-- Back button with page name -->
         <nav class="top">
-            <a href="profile.html">
+            <a href="profile.php">
                 <div class="small-circle" style="margin-right: 20px;">
                     <img src="img\Back.png" alt="Back arrow">
                 </div>

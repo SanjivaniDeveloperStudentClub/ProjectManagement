@@ -1,3 +1,40 @@
+<?php
+// Include your database connection code here
+require "./db_connection.php";
+
+// Include your database connection code here
+$useremail = $_COOKIE['useremail'];
+if(!($useremail)){
+header("Location:index.php");
+}
+$check_query = "SELECT * FROM Organization WHERE Email = '$useremail'";
+$result = $conn->query($check_query);
+$Access;
+$check_query2 = "SELECT * FROM Employee WHERE Email = '$useremail'";
+$result2 = $conn->query($check_query2);
+   if($result2->num_rows > 0){
+    $row = $result2->fetch_assoc();
+    $orgName = $row["Organization_Name"];
+    if($orgName=="Your Organization"){
+        $orgName = "";
+
+    }
+    else{
+        $check_query2 = "SELECT * FROM $orgName WHERE Employee_Email = '$useremail'";
+        $result2 = $conn->query($check_query2);
+        if( $result2->num_rows > 0){
+            $row = $result2->fetch_assoc();
+            $Access = $row["Access"];
+    }
+    else{
+        $orgName="";
+    }
+   }
+   }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +63,7 @@
         </nav>
 
         <!-- Home page body -->
-   
+        <div class="container">
 
             <!-- Profile Overview Container -->
             <div class="logobox">
@@ -46,20 +83,23 @@
             </div>
         </div>
 
-        <a href="EditProfile.html">
+        <a href="EditProfile.php">
             <!-- Submit button -->
             <div class="container">
                 <input type="button" value="Edit Profile" class="edit-button">
             </div>
         </a>
-
+<?php
+if (($result->num_rows > 0)||$Access=="admin") {
+    
+?>
         <div class="container container-large-head">
             <span style="text-align: left;">Admin</span>
         </div>
 
         <div class="container">
 
-            <a href="dashboard.html">
+            <a href="dashboard.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -72,16 +112,32 @@
                     </div>
                 </div>
             </a>
+            <a href="join_Request.php">
+                <div class="wrapper">
+                    <div class="container-row">
+                        <div class="small-logo">
+                            <img src="img\admin-panel.png" alt="Admin logo" style="width: 30px;">
+                        </div>
+                        <!-- <div class="clientname" > -->
+                        <div class="container-text">
+                            <p class="container-head">Request to join</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
         </div>
+<?php
+}
 
+?>
         <div class="container container-large-head">
             <span style="text-align: left;">Others</span>
         </div>
 
         <div class="container">
 
-            <a href="Help_Support.html">
+            <a href="Help_Support.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -95,7 +151,7 @@
                 </div>
             </a>
 
-            <a href="About.html">
+            <a href="About.php">
                 <div class="wrapper">
                     <div class="container-row">
                         <div class="small-logo">
@@ -112,7 +168,7 @@
         </div>
 
 
-        <form action="index.html">
+        <form action="index.php">
             <div class="logout" style="margin-bottom: 100px;">
                 <input type="submit" value="Logout" class="danger-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
             </div>
@@ -121,14 +177,14 @@
         <!-- Bottom Navigation Bar -->
         <div class="bnav-wrapper">
             <div class="bnav">
-                <a href="Home.html"><img src="images/home.svg" alt="Home"></a>
-                <a href="Logs.html"><img src="images/Logs.svg" alt="Logs"></a>
-                <a href="Notification.html"><img src="images/Notification.svg" alt="Notifications"></a>
-                <a href="Profile.html">Profile</a>
+                <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
+                <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
+                <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
+                <a href="Profile.php">Profile</a>
             </div>
         </div>
 
- 
+    </div>
 
 
 </body>

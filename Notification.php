@@ -43,7 +43,7 @@
       <script src="JavaScript\dragtabs.js"></script>
 
       <!-- Project Overview Container -->
-      <a href="Details.html">
+      <a href="Details.php">
         <div class="wrapper">
             <div class="container-row">
                 <div class="small-logo">
@@ -71,10 +71,10 @@
     <!-- Bottom Navigation Bar -->
     <div class="bnav-wrapper">
       <div class="bnav">
-        <a href="Home.html"><img src="images/home.svg" alt="Home"></a>
-        <a href="Logs.html"><img src="images/Logs.svg" alt="Logs"></a>
-        <a href="Notification.html">Alerts</a>
-        <a href="Profile.html"><img src="images/Profile.svg" alt="Profile"></a>
+        <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
+        <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
+        <a href="Notification.php">Alerts</a>
+        <a href="Profile.php"><img src="images/Profile.svg" alt="Profile"></a>
       </div>
     </div>
 

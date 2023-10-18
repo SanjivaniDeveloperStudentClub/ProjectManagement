@@ -26,10 +26,11 @@
         </nav>
 
         <!-- Home page body -->
+        <div class="container">
 
             <!-- Project and Staff tab -->
             <div class="top_btn">
-                <button class="inactive_btn" id="btn1" onclick="window.location.href='home.html'">Project</button>
+                <button class="inactive_btn" id="btn1" onclick="window.location.href='home.php'">Project</button>
                 <button class="active_btn" id="btn2" onclick="window.location.href=''">Staff</button>
             </div>
 
@@ -48,7 +49,7 @@
                 </div>
             </div>
 
-            <!-- ------------ Branch ------------- -!>
+            <!-- ------------ Branch ------------- -->
 
 
 
@@ -98,11 +99,14 @@
             <div class="bnav-wrapper">
                 <div class="bnav">
                     <a href="">Home</a>
-                    <a href="Logs.html"><img src="images/Logs.svg" alt="Logs"></a>
-                    <a href="Notification.html"><img src="images/Notification.svg" alt="Notifications"></a>
-                    <a href="Profile.html"><img src="images/Profile.svg" alt="Profile"></a>
+                    <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
+                    <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
+                    <a href="Profile.php"><img src="images/Profile.svg" alt="Profile"></a>
                 </div>
             </div>
+
+
+        </div>
 
     </div>
 </body>
