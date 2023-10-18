@@ -1,6 +1,6 @@
 <?php
 require "./db_connection.php";
-echo $_GET["emp_id"];
+echo $_GET["empid"];
 if(isset($_GET['emp_id'])){
     $email = $_COOKIE['useremail'];
     
@@ -69,7 +69,7 @@ else{
         }
         else{
             echo "invalid access";
-            // header("Location:index.php");
+            header("Location:index.php");
         }
           }
           else{
@@ -79,6 +79,41 @@ else{
 
 
     // $result1 = $conn->query($query1);
+}
+else{
+    $email = $_COOKIE['useremail'];
+    $empid =$_GET["empid"];
+    $orgName;
+    $orgid;
+    $query_11 = "SELECT * FROM employee WHERE Email = '$email'";
+    $result_11 = $conn->query($query_11);
+    $employee_id;
+    $query;
+    if($result_11->num_rows > 0){
+        $row_11 = $result_11->fetch_assoc();
+        $orgName = $row_11["Organization_Name"];
+    }
+    if($orgName=="Your Organization"){
+        $query = "SELECT * FROM Organization WHERE Email = '$email'";
+        $result = $conn->query($query);
+        $row = $result->fetch_assoc();
+        $orgid = $row["Employee_id"];
+    }
+    else{
+        $query = "SELECT * FROM Organization WHERE Organization_Name = '$orgName'";
+        $result = $conn->query($query);
+        $row = $result->fetch_assoc();
+        $orgid = $row["Employee_id"];
+        
+    }
+    
+    $delete_query = "DELETE FROM $orgName"."_" ."$orgid where Request_id=$empid";
+    //   echo $delete_query;
+      $result11 = $conn->query($delete_query);
+    //   echo $result11;
+      header("Location:join_Request.php");
+
+
 }
 
 

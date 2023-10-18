@@ -11,14 +11,11 @@ $useremail = $_COOKIE['useremail'];
 echo $useremail;
 $column1Value;
 $check_query = "SELECT * FROM Organization WHERE Organization_Name = '$orgName'";
-<<<<<<< HEAD
 $check1_query = "SELECT * FROM Organization WHERE Email = '$useremail'";
 
 $result = $conn->query($check1_query);
 if (!($result->num_rows > 0)) {
 
-=======
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 $result = $conn->query($check_query);
 if (!($result->num_rows > 0)) {
 
@@ -53,24 +50,17 @@ $CreateQuery = "CREATE TABLE " . $orgName . "_" . $column1Value . " (
   REmployee_Name TEXT,
   Role TEXT
 )";
-<<<<<<< HEAD
 $CreateQuery2 = "CREATE TABLE $orgName (
   Employee_Id integer ,
   Employee_Name text,
   Access text,
   Employee_Email text
 )";
-=======
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 
 // Assuming you have default values for Designation, Department, Branch, and Employee
 
 if ($conn->query($insertQuery)) {
-<<<<<<< HEAD
   echo "Orginzation created successful!";
-=======
-  echo "Orgnation created successful!";
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
   // header("Location:organization.php");
 } else {
   echo "Fill all fileds properly $conn->error";
@@ -78,7 +68,6 @@ if ($conn->query($insertQuery)) {
 if ($conn->query($CreateQuery)) {
   //dont show this message
   echo "table created successful!";
-<<<<<<< HEAD
   // header("Location:organization.php");
 } else {
   echo " orginazation already exist1";
@@ -94,11 +83,6 @@ $update_result = $conn->query($upate_query);
 } else {
   echo " orginazation already exist2";
   echo $conn->error;
-=======
-  header("Location:organization.php");
-} else {
-  // echo " $conn->error";
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 }
 }
   }
@@ -110,13 +94,10 @@ else {
   echo "organization already exist";
 }
 }
-<<<<<<< HEAD
 else{
   echo "you can create only one orignization";
 }
 }
-=======
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 }
 ?>
 

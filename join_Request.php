@@ -24,13 +24,13 @@ if ($result->num_rows > 0){
     // Access individual fields by column name
     $orgName = $row["Organization_Name"];
     $employee_id = $row["Employee_id"];
-echo $orgName;
+// echo $orgName;
 }
 else{
     echo "error";
 }
 if(isset($_POST['Accept'])){
-    echo $Role;
+    // echo $Role;
     // $Search_query = "SELECT * FROM Organization WHERE REmployee = '$email'";
 
     // $Accept_query = "INSERT INTO $orgName (Employee_Id, Employee_Name, Access, Employee_Email) VALUES ('$orgName', '$orgEmail', '$designation', '$department','$branch','$column1Value','$orgContact','$useremail')";
@@ -132,7 +132,7 @@ $result1 = $conn->query($query1);
                             <button type="button" class="small-button safe-button" value="Accept"  name="Accept"  ><?php echo '<a href="./Accept.php?emp_id='.$id.'"> Accept </a>'; ?></button>
                     </td>
                     <td>
-                    <?php  echo '<button type="button" class="small-button danger-button"  ><a value="Accept" href="./Accept.php?emp_id='.$id.'">Reject</a></button>'; ?>
+                    <?php  echo '<button type="button" class="small-button danger-button"  ><a value="Accept" href="./Accept.php?empid='.$id.'">Reject</a></button>'; ?>
                     </td>
                 </tr>
                 <?php
