@@ -20,7 +20,11 @@ try{
   
   if ($result->num_rows == 1) {
     // Login successful
+<<<<<<< HEAD
     setcookie('useremail',$email);
+=======
+    setcookie('username','om' , time() - 3600, '/');
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 
     header("Location: home.php"); // Redirect to the home page
   } else {

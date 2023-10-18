@@ -43,6 +43,7 @@ $username;
         </div>
 
         <!-- Project Overview Container -->
+<<<<<<< HEAD
         <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -55,6 +56,10 @@ $username;
                     ?>
                     <a href="Details.php?pid=<?php echo $pid?>">
            <div class="wrapper">
+=======
+        <a href="Details.php">
+            <div class="wrapper">
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
                 <div class="container-row">
                     <div class="small-logo">
                         <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
@@ -115,7 +120,10 @@ $username;
             ?>
         </a>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
         <a href="Submission_form.php">
             <div class="container">
                 <button id="fab" class="fab">+</button>

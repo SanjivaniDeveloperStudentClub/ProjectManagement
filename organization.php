@@ -1,6 +1,7 @@
 <?php
   // Set up a database connection
   require "./db_connection.php";
+<<<<<<< HEAD
   // require "./userdetails.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get the organization name and role from the form
@@ -27,12 +28,24 @@ echo "userid".$userid;
       header("Location:register.php");
     }
 $employee_id;
+=======
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Get the organization name and role from the form
+    $useremail = $_COOKIE['useremail'];
+    $Employee_name = $_COOKIE['Employee_name'];
+
+    $orgName = $_POST["organization-name"];
+    $role = $_POST["Role"];
+    $employeeId;
+    $organizationName;
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 //find organization name and employee id
 $check_query = "SELECT Employee_id FROM Organization WHERE Organization_Name = '$orgName'";
 $result = $conn->query($check_query);
 echo $result->num_rows;
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
+<<<<<<< HEAD
     //     // Access individual fields by column name
         $employee_id = $row["Employee_id"];
     }
@@ -59,6 +72,14 @@ if ($result_2->num_rows > 0) {
     
     // Construct the table name based on the orgName and role
     $tableName = $orgName . "_" . $employee_id;
+=======
+//     // Access individual fields by column name
+    $employeeId = $row["Employee_id"];
+echo $employeeId;
+}
+    // Construct the table name based on the orgName and role
+    $tableName = $orgName . "_" . $employeeId;
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 
     // Insert data into the specified table
     $insertQuery = "INSERT INTO " . $tableName . " (REmployee_id, REmployee_Name,Role) VALUES (?, ?,?)";
@@ -72,7 +93,11 @@ if ($result_2->num_rows > 0) {
 
     // Bind parameters
 
+<<<<<<< HEAD
     $stmt->bind_param("sss", $userid, $Employee_name,$role);
+=======
+    $stmt->bind_param("sss", $employeeId, $Employee_name,$role);
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -81,6 +106,7 @@ if ($result_2->num_rows > 0) {
         echo "Error: " . $stmt->error;
     }
     $stmt->close();
+<<<<<<< HEAD
   
 }else{
   echo $conn->error;
@@ -96,6 +122,12 @@ else{
   
   echo "orginaztion doest not exist";
 }
+=======
+  }
+  else{
+    echo "organization not exist";
+  }
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 }
  
 ?>
@@ -152,10 +184,13 @@ else{
     </div>
 
   </body>
+<<<<<<< HEAD
   <script>
 if(window.history.replaceState){
 window.history.replaceState(null,null,window.location.href);
 
 }
 </script>
+=======
+>>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
 </html>

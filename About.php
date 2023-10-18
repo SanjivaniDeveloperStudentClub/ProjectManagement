@@ -13,7 +13,7 @@
 <body>
     <div class="container">
 
-        <!-- Back button with page name -->
+        <!-- Back buttonith page name -->
         <nav class="top">
             <a href="profile.php">
                 <div class="small-circle" style="margin-right: 20px;">
