@@ -82,6 +82,9 @@
 
     width: 100%;
 }
+.container-subhead{
+    overflow: hidden;
+}
 
 /* Left aligned sub-heading for container */
 .container-subhead {
@@ -192,4 +195,11 @@
     .large-head {
         font-size: 24px;
     }
+}
+p{
+    overflow: hidden;
+}
+
+.container-text{
+    overflow: hidden;
 }

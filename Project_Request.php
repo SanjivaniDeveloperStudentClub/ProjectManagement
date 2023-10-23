@@ -1,10 +1,8 @@
-<?php
-require './db_connection.php';
-require './authchecker.php';
-$query = "SELECT * FROM Project";
+<?php 
+require "./db_connection.php";
+$query = "SELECT * FROM Project WHERE Status= 'pending'";
+  $result = $conn->query($query);
 
-$result = $conn->query($query);
-$username;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +24,7 @@ $username;
     <!-- App Name -->
     <nav class="top">
       <div class="large-head">
-        <div name="title">Project</div>
+        <div name="title">Project Management</div>
       </div>
 
       <div class="small-circle">
@@ -38,52 +36,35 @@ $username;
     <!-- <div class="container"> -->
 
       <!-- Scrolling tabs for filtering the data -->
-      <div class="tab-container">
-        <div class="tabs" id="tabs">
-          <button class="tab active" data-tab="all">All</button>
-          <button class="tab" data-tab="approved">Approved</button>
-          <button class="tab" data-tab="disapproved">Disapproved</button>
-          <button class="tab" data-tab="action">Action Required</button>
-          <button class="tab" data-tab="updated">Updated</button>
-        </div>
-      </div>
 
-      <script src="JavaScript\dragtabs.js"></script>
-
-      <!-- Project Overview Container -->
-      <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    // Access individual fields by column name
-                    $pid = $row["Project_ID"];
+<?php
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $pid = $row["Project_ID"];
                     $title = $row["Title"];
                     $cost = $row["Cost"];
                     $Status = $row["Status"];
                     $estimated_completion = $row["Estimated_Completion"];
                     $startedDate = $row["Started_Date"];
-                    $Organization_Name  =$row['Organization_Name'];
-                    $employee_id  =$row['Employee_id'];
-                    $query1 = "SELECT * FROM employee where Employee_id=".$employee_id;
-                    $result1 = $conn->query($query1);
-                    $row1 = $result1->fetch_assoc();
-                    $projectUsername=$row1['Employee_Name'];
-                    
-                    ?>
-                    <a href="Details.php?pid=<?php echo $pid?>">
-                   <div class="wrapper">
+                    $Organization_Name = $row["Organization_Name"];
+?>
+<!-- Project Overview Container -->
+      <?php echo'<a href="Details.php?pid='.$pid.'">'
+      ?>
+            <div class="wrapper">
                 <div class="container-row">
                     <div class="small-logo">
                         <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
                     </div>
                     <div class="clientname" style="margin-bottom: 10px;">
-                        <p class="container-subhead"> <?php echo $projectUsername ?></p>
+                        <p class="container-subhead"><?php echo $_COOKIE['Employee_name'] ?></p>
                     </div>
                 </div>
                 <div class="track">
                     <h3>
-                        <p class="container-subhead">
+                        <p style="overflow: hidden;" class="container-subhead">
                         <?php echo $title?>
-                        </p>
+    </p>
                     </h3>
                 </div>
                 <div class="track">
@@ -125,14 +106,15 @@ $username;
                     </div>
 
                 </div>
+                <?php echo '<a href="./Accept_Project_Request.php?pid='.$pid.'">Acccept</a>' ?>
+                <?php echo '<a href="./Reject_Project_Request.php?pid='.$pid.'">Reject</a>' ?>
             </div>
             <?php
-                }
-            }
             ?>
         </a>
-      
-
+     <?php
+    }}
+     ?>
     <!-- </div> -->
 
     <!-- Bottom Navigation Bar -->

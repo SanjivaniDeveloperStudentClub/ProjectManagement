@@ -51,7 +51,7 @@ $result2 = $conn->query($check_query2);
 </head>
 
 <body>
-    <div class="container">
+<!-- <div class="container"> -->
         <!-- App Name -->
         <nav class="top">
             <div class="large-head">
@@ -90,7 +90,7 @@ $result2 = $conn->query($check_query2);
             </div>
         </a>
 <?php
-if (($result->num_rows > 0)||$Access=="admin") {
+if (($result->num_rows > 0)||$Access=="admin"||$Access=="Admin") {
     
 ?>
         <div class="container container-large-head">
@@ -121,6 +121,19 @@ if (($result->num_rows > 0)||$Access=="admin") {
                         <!-- <div class="clientname" > -->
                         <div class="container-text">
                             <p class="container-head">Request to join</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="Project_Request.php">
+                <div class="wrapper">
+                    <div class="container-row">
+                        <div class="small-logo">
+                            <img src="img\admin-panel.png" alt="Admin logo" style="width: 30px;">
+                        </div>
+                        <!-- <div class="clientname" > -->
+                        <div class="container-text">
+                            <p class="container-head">Project Management</p>
                         </div>
                     </div>
                 </div>
@@ -184,7 +197,7 @@ if (($result->num_rows > 0)||$Access=="admin") {
             </div>
         </div>
 
-    </div>
+    <!-- </div> -->
 
 
 </body>

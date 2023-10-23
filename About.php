@@ -29,7 +29,7 @@
 
     <div class="container">
         <div class="container-body" style="margin-left: 20px;">
-            <h3>Welcome to Sanjivani's cutting-edge application designed to foster innovation, collaboration, and excellence within our academic community.</h3>
+            Welcome to Sanjivani's cutting-edge application designed to foster innovation, collaboration, and excellence within our academic community.
         </div>
 
         <br>
