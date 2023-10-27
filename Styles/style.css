@@ -144,3 +144,7 @@ form .row input::placeholder {
 .signup-link a:hover {
     text-decoration: underline;
 }
+p{
+    overflow: hidden;
+
+}

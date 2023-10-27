@@ -75,10 +75,11 @@ if ($conn->query($CreateQuery)) {
 if ($conn->query($CreateQuery2)) {
   //dont show this message
   echo "table created successful!";
-  $upate_query ="UPDATE employee
+  $upate_query ="UPDATE Employee
 SET Organization_Name = '$orgName'
 WHERE Email='$useremail'";
 $update_result = $conn->query($upate_query);
+echo $conn->error;
   header("Location:home.php");
 } else {
   echo " orginazation already exist2";

@@ -1,11 +1,16 @@
 <?php
 require "./db_connection.php";
 $email = $_COOKIE['useremail'];
-$query_11 = "SELECT * FROM employee WHERE Email = '$email'";
+$query_11 = "SELECT * FROM Employee WHERE Email = '$email'";
 $result_11 = $conn->query($query_11);
 $orgName;
 $employee_id;
 $query;
+if ($result_11 === false) {
+    // Handle the query error here
+    echo "no account found";
+}
+else{
 if($result_11->num_rows > 0){
     $row_11 = $result_11->fetch_assoc();
     $orgName = $row_11["Organization_Name"];
@@ -42,15 +47,11 @@ if(isset($_POST['Reject'])){
 
 
 }
-function hello($namel){
-    echo $namel;
-}
-
 //
 $query1 = "SELECT * FROM $orgName"."_" ."$employee_id";
 // echo $query1;
 $result1 = $conn->query($query1);
-
+}
 
 
 

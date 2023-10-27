@@ -45,6 +45,12 @@ try{
 
 <body>
     <div class="container">
+    <div class="logobox">
+        <div class="logo">
+            <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
+        </div>
+    </div>
+
         <div class="wrapper">
             <div class="container-large-head">
                 <span>Login</span>

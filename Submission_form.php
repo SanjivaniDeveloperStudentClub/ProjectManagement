@@ -5,6 +5,7 @@ if(isset($_POST["submit"])){
     $currentDate = date('Y-m-d'); // Format: Year-Month-Day
     // Get form data
     $title = $_POST['title'];
+    // $sql_document = "fileup";
     $estimated_completion = $_POST['estimated_completion'];
     $cost = $_POST['cost'];
     $summary = $_POST['summary'];
@@ -20,12 +21,13 @@ if(isset($_POST["submit"])){
       while ($row = $result->fetch_assoc()) {
         // Access individual fields by column name
         $eid = $row["Employee_id"];
+        $Organization_Name = $row["Organization_Name"];
     // echo $column1Value;
     }
   }
     // Insert data into the Project table
-    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id)
-        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid')";
+    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name)
+        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Data inserted successfully!";
@@ -91,18 +93,13 @@ if ($conn->query($sql) === TRUE) {
                 <label class="container-subhead" style="margin-bottom: 10px;">Documents - </label>
                 <div class="wrapper">
                 <div class="container-row">
-                    <div class="small-logo">
+                    <form method="post" enctype="multipart/form-data" class="container-text">
+                        <label class="-head"><span class="small-logo">
                         <img src="img\pdf.svg" alt="pdf_logo" style="width: 30px;">
-                    </div>
-                    <!-- <div class="clientname" > -->
-                    <div class="container-text">
-                        <label class="container-head" for="document">Documentation</label>
-                        <input type="file" style="display:none"  name="document" id="document">
+</span>Documentation</label>
+                        <input  type="text" style="display:block"  name="document" id="document">
                     </div>
 
-                    <div style="margin-left: auto; margin-right: 10px; align-items: end; align-content: end;">
-                        <img src="img\black-cross.svg" alt="Cross arrow">
-                    </div>
                 </div>
             </div>
 

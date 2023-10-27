@@ -35,7 +35,7 @@
           <button class="tab active" data-tab="all">All</button>
           <button class="tab" data-tab="approved">Approved</button>
           <button class="tab" data-tab="disapproved">Disapproved</button>
-          <button class="tab" data-tab="action">Action Required</button>
+          <button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required.php">Action Required</a></button>
           <button class="tab" data-tab="updated">Updated</button>
         </div>
       </div>

@@ -19,7 +19,12 @@ $username;
     <title>Home</title>
 
 </head>
+<style>
+.container-subhead{
+    overflow: hidden;
+}
 
+</style>
 <body>
     <div class="container">
         <!-- App Name -->
@@ -50,27 +55,26 @@ $username;
                     $pid = $row["Project_ID"];
                     $title = $row["Title"];
                     $cost = $row["Cost"];
+                    $Status = $row["Status"];
                     $estimated_completion = $row["Estimated_Completion"];
                     $startedDate = $row["Started_Date"];
+                    $Organization_Name  =$row['Organization_Name'];
                     ?>
                     <a href="Details.php?pid=<?php echo $pid?>">
-           <div class="wrapper">
-=======
-        <a href="Details.php">
-            <div class="wrapper">
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
+                   <div class="wrapper">
                 <div class="container-row">
                     <div class="small-logo">
                         <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
                     </div>
                     <div class="clientname" style="margin-bottom: 10px;">
-                        <p class="container-subhead">Developer Students Club</p>
+                        <p class="container-subhead"> <?php echo $Organization_Name ?></p>
                     </div>
                 </div>
                 <div class="track">
                     <h3>
                         <p class="container-subhead">
-                        <?php echo "<p>$title</p>"?>
+                        <?php echo $title?>
+                        </p>
                     </h3>
                 </div>
                 <div class="track">
@@ -80,7 +84,7 @@ $username;
                             <p class="container-body">Status -</p>
                         </h3>
                         <h3>
-                            <p class="container-body">On-Going</p>
+                            <p class="container-body"> <?php echo $Status?></p>
                         </h3>
                     </div>
                     <div class="container-row space">
