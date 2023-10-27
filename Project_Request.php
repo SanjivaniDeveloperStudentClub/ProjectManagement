@@ -49,11 +49,7 @@ $query = "SELECT * FROM Project WHERE Status= 'pending'";
                     $Organization_Name = $row["Organization_Name"];
 ?>
 <!-- Project Overview Container -->
-<<<<<<< HEAD
-      <?php echo'<a href="Details.php?pid='.$pid.'">'hom
-=======
-      <?php echo'<a href="Details.php?pid='.$pid.'">'
->>>>>>> ad65ea441c30aa30a382564da3b4c2dd0b8322bc
+      <?php echo'<a href="Details.php?pid='.$pid.'">'home
       ?>
             <div class="wrapper">
                 <div class="container-row">
@@ -61,11 +57,7 @@ $query = "SELECT * FROM Project WHERE Status= 'pending'";
                         <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
                     </div>
                     <div class="clientname" style="margin-bottom: 10px;">
-<<<<<<< HEAD
                         <p class="container-subhead"><?php echo $Organization_Name ?></p>
-=======
-                        <p class="container-subhead"><?php echo $_COOKIE['Employee_name'] ?></p>
->>>>>>> ad65ea441c30aa30a382564da3b4c2dd0b8322bc
                     </div>
                 </div>
                 <div class="track">
