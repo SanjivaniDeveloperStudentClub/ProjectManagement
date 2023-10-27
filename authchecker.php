@@ -1,6 +1,7 @@
 <?php
 require "./db_connection.php";
 $useremail =$_COOKIE['useremail'];
+echo $useremail;
 $query = "SELECT * FROM Employee WHERE Email = '$useremail'";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
@@ -11,10 +12,13 @@ if ($result->num_rows > 0) {
     }
     else{
         echo "alert('join orgnization first')";
-        header("Location:organization.php");
+        header("Location:home.php");
     }
 // echo $column1Value;
 }
+}
+else{
+  header("Location:index.php");
 }
 
 ?>

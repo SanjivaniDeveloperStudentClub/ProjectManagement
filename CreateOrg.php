@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 $useremail = $_COOKIE['useremail'];
 echo $useremail;
 $column1Value;
+$result = "SELECT *from employee where email=$useremail";
 $check_query = "SELECT * FROM Organization WHERE Organization_Name = '$orgName'";
 $check1_query = "SELECT * FROM Organization WHERE Email = '$useremail'";
 

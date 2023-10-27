@@ -1462,7 +1462,11 @@ select {
 }
 p{
     overflow: hidden;
+<<<<<<< HEAD
 }
 .container-subhead{
     overflow: hidden;
 }
+=======
+}
+>>>>>>> ad65ea441c30aa30a382564da3b4c2dd0b8322bc

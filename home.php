@@ -2,6 +2,7 @@
 require './db_connection.php';
 require './authchecker.php';
 $query = "SELECT * FROM Project";
+
 $result = $conn->query($query);
 $username;
 ?>
@@ -59,6 +60,15 @@ $username;
                     $estimated_completion = $row["Estimated_Completion"];
                     $startedDate = $row["Started_Date"];
                     $Organization_Name  =$row['Organization_Name'];
+<<<<<<< HEAD
+=======
+                    $employee_id  =$row['Employee_id'];
+                    $query1 = "SELECT * FROM employee where Employee_id=".$employee_id;
+                    $result1 = $conn->query($query1);
+                    $row1 = $result1->fetch_assoc();
+                    $projectUsername=$row1['Employee_Name'];
+                    
+>>>>>>> ad65ea441c30aa30a382564da3b4c2dd0b8322bc
                     ?>
                     <a href="Details.php?pid=<?php echo $pid?>">
                    <div class="wrapper">
@@ -67,7 +77,11 @@ $username;
                         <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
                     </div>
                     <div class="clientname" style="margin-bottom: 10px;">
+<<<<<<< HEAD
                         <p class="container-subhead"> <?php echo $Organization_Name ?></p>
+=======
+                        <p class="container-subhead"> <?php echo $projectUsername ?></p>
+>>>>>>> ad65ea441c30aa30a382564da3b4c2dd0b8322bc
                     </div>
                 </div>
                 <div class="track">

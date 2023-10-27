@@ -51,7 +51,7 @@ $result2 = $conn->query($check_query2);
 </head>
 
 <body>
-    <div class="container">
+<!-- <div class="container"> -->
         <!-- App Name -->
         <nav class="top">
             <div class="large-head">
@@ -197,7 +197,7 @@ if (($result->num_rows > 0)||$Access=="admin"||$Access=="Admin") {
             </div>
         </div>
 
-    </div>
+    <!-- </div> -->
 
 
 </body>
