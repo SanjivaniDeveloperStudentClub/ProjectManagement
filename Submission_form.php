@@ -13,6 +13,12 @@ if(isset($_POST["submit"])){
     $requirements = $_POST['requirements'];
     $document = $_POST['document'];
     $useremail=$_COOKIE['useremail'];
+    $milestones =  array();
+    for($i=0; $i<count($_POST["milestones"]); $i++){
+        
+$milestones[]=$_POST["milestones"][$i];
+        
+    }    $serializedMilestones = serialize($milestones);
     // You can also process the documents here if needed
     $query = "SELECT * FROM Employee WHERE Email = '$useremail'";
     $result = $conn->query($query);
@@ -26,12 +32,12 @@ if(isset($_POST["submit"])){
     }
   }
     // Insert data into the Project table
-    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name)
-        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name')";
+    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones)
+        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name','$serializedMilestones')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Data inserted successfully!";
-    header("Location:home.php");
+    // header("Location:home.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -89,6 +95,12 @@ if ($conn->query($sql) === TRUE) {
                 <label class="container-subhead" style="margin-bottom: 10px;">Requirements - </label>
                 <textarea name="requirements" class="custom-textarea" placeholder="Enter requirements of your project..."></textarea>
                 <br>
+                <p class="container-subhead" style="margin-bottom: 20px;" id="milestones">Milestones - </label>
+                <label class="container-subhead" style="margin-bottom: 10px;">Milestone 1:- </label>
+                <textarea placeholder="Milestone 1 text" name="milestones[]" class="custom-textfield" id="milestone"></textarea>
+                <p class="logout" onclick="addmilestonefields()"> Add more milestone</p>
+</p>
+                <br>
 
                 <label class="container-subhead" style="margin-bottom: 10px;">Documents - </label>
                 <div class="wrapper">
@@ -119,6 +131,24 @@ if ($conn->query($sql) === TRUE) {
 if(window.history.replaceState){
 window.history.replaceState(null,null,window.location.href);
 
+}
+let milestonecount=1;
+function addmilestonefields(e){
+    milestonecount++;
+    const milestonesContainer = document.getElementById('milestones');
+    const newMilestoneTextarea = document.createElement('textarea');
+    const newMilestonelabel = document.createElement('label');
+    newMilestoneTextarea.name = 'milestones[]'; 
+    newMilestoneTextarea.className = 'custom-textfield';
+    newMilestoneTextarea.id = 'milestone';
+    newMilestoneTextarea.placeholder = `Milestone ${milestonecount} text`;
+    newMilestonelabel.className = 'container-subhead';
+    newMilestonelabel.innerText = `Milestone ${milestonecount}:-`;
+    milestonesContainer.appendChild(newMilestonelabel);
+    milestonesContainer.appendChild(newMilestoneTextarea);
+    // newMilestonelabel.name = 'milestones[]'; 
+
+    
 }
 </script>
 </html>

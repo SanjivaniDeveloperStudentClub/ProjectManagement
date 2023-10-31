@@ -8,6 +8,5 @@ if(isset($_GET['pid'])){
     $update_result = $conn->query($upate_query);
     // echo $update_result;
     header("Location:Project_Request.php");
-
 }
 ?>

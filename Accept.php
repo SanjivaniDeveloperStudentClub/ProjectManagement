@@ -6,7 +6,7 @@ if(isset($_GET['emp_id'])){
     
     $orgName;
     $orgid;
-    $query_11 = "SELECT * FROM employee WHERE Email = '$email'";
+    $query_11 = "SELECT * FROM EmployeeWHERE Email = '$email'";
 $result_11 = $conn->query($query_11);
 $employee_id;
 $query;
@@ -85,7 +85,7 @@ else{
     $empid =$_GET["empid"];
     $orgName;
     $orgid;
-    $query_11 = "SELECT * FROM employee WHERE Email = '$email'";
+    $query_11 = "SELECT * FROM Employee WHERE Email = '$email'";
     $result_11 = $conn->query($query_11);
     $employee_id;
     $query;

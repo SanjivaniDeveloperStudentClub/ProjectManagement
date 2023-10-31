@@ -36,7 +36,6 @@ $username;
 
     <!-- Home page body -->
     <!-- <div class="container"> -->
-
       <!-- Scrolling tabs for filtering the data -->
       <div class="tab-container">
         <div class="tabs" id="tabs">
@@ -47,9 +46,7 @@ $username;
           <button class="tab" data-tab="updated">Updated</button>
         </div>
       </div>
-
       <script src="JavaScript\dragtabs.js"></script>
-
       <!-- Project Overview Container -->
       <?php
             if ($result->num_rows > 0) {

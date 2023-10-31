@@ -74,6 +74,8 @@ function generateOTP() {
 
     return rand(100000, 999999);
 }
+$conn->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

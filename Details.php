@@ -63,35 +63,6 @@ $username;
                 </div>
             </nav>
 
-            <!-- <div class="project-progressbar">
-=======
-    <div class="container">
-
-        <nav class="top">
-            <a href="home.php">
-                <div class="small-circle" style="margin-right: 20px;">
-                    <img src="img\Back.png" alt="Back arrow">
-                </div>
-            </a>
-            <div class="large-head">
-                <div name="title">Project</div>
-            </div>
-        </nav>
-
-        <!-- <div class="project-progressbar">
->>>>>>> 1ce98e610d5d17b7f04d8d40bc0eea3f5416caad
-            <div class="project-progressbar-title blue">Submitted</div>
-            <div class="line blue"></div>
-
-            <div class="project-progressbar-title blue">HOD</div>
-            <div class="line"></div>
-
-            <div class="project-progressbar-title">Principal</div>
-            <div class="line"></div>
-
-            <div class="project-progressbar-title">Sancation</div>
-
-        </div> -->
 
 
             <label class="container-subhead">Title:</label>
@@ -130,7 +101,161 @@ $username;
             </div>
 
             <br>
+       
+  <style>
+    * {
+  box-sizing: border-box;
+}
 
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* timline-container around content */
+.timline-container {
+  padding: 10px 50px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.timline-container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: #61D4E8;
+  border: 4px solid #2DA1E7;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the timline-container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the timline-container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left timline-container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right timline-container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for timline-containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+ }
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+/* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
+  }
+
+/* Full-width timline-containers */
+  .timline-container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+/* Make sure that all arrows are pointing leftwards */
+  .timline-container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+/* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+    left: 15px;
+  }
+
+/* Make all right timline-containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
+  </style>
+  <label class="container-subhead">Milestones:-</label>
+          
+<div class="timeline">
+
+    <?php
+    $serializedDataFromDatabase = $row['Milestones'];
+ $milestones = unserialize($serializedDataFromDatabase);
+//   print_r($milestones);
+ for($i=0;$i<count($milestones);$i++){
+?>
+  <div class="timline-container left">
+    <p>
+      <i class="fa fa-code-fork" aria-hidden="true"></i>
+    <div class="content">
+      <p><?php echo $milestones[$i] ?></p>
+    </div>
+</div>
+<?php
+ }
+?>
+     ?>
+</div>
+
+<br>
             <label class="container-subhead" style="margin-bottom: 10px;">Documents - </label>
 
             <div class="wrapper">
@@ -247,6 +372,8 @@ $username;
         <?php
             break;    
             }}
+            $conn->close();
+
         ?>
     </div>
 </body>

@@ -49,7 +49,7 @@ $query = "SELECT * FROM Project WHERE Status= 'pending'";
                     $Organization_Name = $row["Organization_Name"];
 ?>
 <!-- Project Overview Container -->
-      <?php echo'<a href="Details.php?pid='.$pid.'">'home
+      <?php echo'<a href="Details.php?pid='.$pid.'">'
       ?>
             <div class="wrapper">
                 <div class="container-row">
@@ -114,6 +114,7 @@ $query = "SELECT * FROM Project WHERE Status= 'pending'";
         </a>
      <?php
     }}
+
      ?>
     <!-- </div> -->
 
