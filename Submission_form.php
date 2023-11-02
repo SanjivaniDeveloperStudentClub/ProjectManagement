@@ -32,7 +32,7 @@ if (isset($_POST["submit"])) {
             // Access individual fields by column name
             $eid = $row["Employee_id"];
             $Organization_Name = $row["Organization_Name"];
-            // echo $column1Value;
+            echo $Organization_Name;
         }
     }
     // Insert data into the Project table
@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
         echo "Data inserted successfully!";
         header("Location:home.php");
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 // Close the database connection

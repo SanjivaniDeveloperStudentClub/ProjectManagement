@@ -4,7 +4,7 @@ require './authchecker.php';
 require "./php/currentuser_details.php";
 
 $userdetail = currentuserdetails();
-$proresult;
+$proresult = null;
 if ($userdetail) {
     $employeeId = $userdetail["Employee_id"];
 
@@ -113,7 +113,7 @@ $username;
 
         <!-- Project Overview Container -->
         <?php
-        if ($proresult->num_rows > 0) {
+        if ($proresult && $proresult->num_rows > 0) {
             while ($row = $proresult->fetch_assoc()) {
                 // Access individual fields by column name
                 $pid = $row["Project_ID"];

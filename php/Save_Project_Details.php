@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 WHERE Project_ID=$pid";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location:home.php");
+        header("Location:../home.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

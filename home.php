@@ -4,7 +4,8 @@ require './authchecker.php';
 require "./php/currentuser_details.php";
 
 $userdetail = currentuserdetails();
-$proresult;
+$proresult = null;
+
 if ($userdetail) {
     $employeeId = $userdetail["Employee_id"];
 
@@ -31,7 +32,7 @@ if ($userdetail) {
 } else {
     echo "Error: User details not found.";
 }
-
+// print_r();
 
 $result = $conn->query($query);
 ?>
@@ -102,121 +103,126 @@ $result = $conn->query($query);
         <div class="scroll">
             <!-- Project Overview Container -->
             <?php
-            if ($proresult->num_rows > 0) {
-                while ($row = $proresult->fetch_assoc()) {
-                    // Access individual fields by column name
-                    $pid = $row["Project_ID"];
-                    $title = $row["Title"];
-                    $cost = $row["Cost"];
-                    $Status = $row["Status"];
-                    $estimated_completion = $row["Estimated_Completion"];
-                    $startedDate = $row["Started_Date"];
-                    $Organization_Name = $row['Organization_Name'];
+            try {
+                if ($proresult && $proresult->num_rows > 0) {
+                    while ($row = $proresult->fetch_assoc()) {
+                        // Access individual fields by column name
+                        $pid = $row["Project_ID"];
+                        $title = $row["Title"];
+                        $cost = $row["Cost"];
+                        $Status = $row["Status"];
+                        $estimated_completion = $row["Estimated_Completion"];
+                        $startedDate = $row["Started_Date"];
+                        $Organization_Name = $row['Organization_Name'];
             ?>
-                    <a href="Details.php?pid=<?php echo $pid ?>">
-                        <div class="wrapper">
-                            <div class="container-row">
-                                <div class="small-logo">
-                                    <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
+                        <a href="Details.php?pid=<?php echo $pid ?>">
+                            <div class="wrapper">
+                                <div class="container-row">
+                                    <div class="small-logo">
+                                        <img src="images/dcslogo.png" alt="dsc_logo" class="container-img">
+                                    </div>
+                                    <div class="clientname" style="margin-bottom: 10px;">
+                                        <p class="container-subhead">
+                                            <?php echo $Organization_Name ?>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="clientname" style="margin-bottom: 10px;">
-                                    <p class="container-subhead">
-                                        <?php echo $Organization_Name ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="track">
-                                <h3>
-                                    <p class="container-subhead">
-                                        <?php echo $title ?>
-                                    </p>
-                                </h3>
-                            </div>
-                            <div class="track">
-                                <div class="container-row space">
-
+                                <div class="track">
                                     <h3>
-                                        <p class="container-body">Status -</p>
-                                    </h3>
-                                    <h3>
-                                        <p class="container-body">
-                                            <?php echo $Status ?>
+                                        <p class="container-subhead">
+                                            <?php echo $title ?>
                                         </p>
                                     </h3>
                                 </div>
-                                <div class="container-row space">
+                                <div class="track">
+                                    <div class="container-row space">
 
-                                    <h3>
-                                        <p class="container-body">Started on -</p>
-                                    </h3>
-                                    <h3>
-                                        <p class="container-body">
-                                            <?php echo $startedDate ?>
-                                        </p>
-                                    </h3>
-                                </div>
-                                <div class="container-row space">
+                                        <h3>
+                                            <p class="container-body">Status -</p>
+                                        </h3>
+                                        <h3>
+                                            <p class="container-body">
+                                                <?php echo $Status ?>
+                                            </p>
+                                        </h3>
+                                    </div>
+                                    <div class="container-row space">
 
-                                    <h3>
-                                        <p class="container-body">Estimated completion -</p>
-                                    </h3>
-                                    <h3>
-                                        <p class="container-body">
-                                            <?php echo $estimated_completion ?>
-                                        </p>
-                                    </h3>
-                                </div>
-                                <div class="container-row space">
+                                        <h3>
+                                            <p class="container-body">Started on -</p>
+                                        </h3>
+                                        <h3>
+                                            <p class="container-body">
+                                                <?php echo $startedDate ?>
+                                            </p>
+                                        </h3>
+                                    </div>
+                                    <div class="container-row space">
 
-                                    <h3>
-                                        <p class="container-body">Cost -</p>
-                                    </h3>
-                                    <h3>
-                                        <p class="container-body">
-                                            <?php echo " $cost ₹" ?>
-                                        </p>
-                                    </h3>
-                                </div>
-                                <div class="milestone-container">
-                                    <?php
-                                    $serializedDataFromDatabase = $row['Milestones'];
-                                    $serializedDataFromDatabase_status = $row['Milestones_status'];
-                                    $serializedDataFromDatabase_dates = $row['Milestones_dates'];
-                                    $milestones = unserialize($serializedDataFromDatabase);
-                                    $milestones_status = unserialize($serializedDataFromDatabase_status);
-                                    $milestones_dates = unserialize($serializedDataFromDatabase_dates);
-                                    $currentDate = date("Y-m-d");
+                                        <h3>
+                                            <p class="container-body">Estimated completion -</p>
+                                        </h3>
+                                        <h3>
+                                            <p class="container-body">
+                                                <?php echo $estimated_completion ?>
+                                            </p>
+                                        </h3>
+                                    </div>
+                                    <div class="container-row space">
 
-                                    for ($ind = 0; $ind < count($milestones); $ind++) {
-                                        $date1 = strtotime($currentDate);
-                                        $date2 = strtotime($milestones_dates[$ind]);
-                                        // echo $milestones_dates[$ind];
-                                        // echo $date2;
-                                        if (($date1 > $date2) && $milestones_status[$ind] != "complete") {
-                                            $milestones_status[$ind] = "due";
-                                            echo '<div class="milestone-container-dot milestone-due"></div>';
-                                        } elseif ($milestones_status[$ind] == "complete") {
-                                            echo '<div class="milestone-container-dot milestone-complete"></div>';
-                                        } elseif ($milestones_status[$ind] == "ongoing") {
-                                            echo '<div class="milestone-container-dot milestone-ongoing"></div>';
-                                        } else {
-                                            echo '<div class="milestone-container-dot milestone-coming"></div>';
+                                        <h3>
+                                            <p class="container-body">Cost -</p>
+                                        </h3>
+                                        <h3>
+                                            <p class="container-body">
+                                                <?php echo " $cost ₹" ?>
+                                            </p>
+                                        </h3>
+                                    </div>
+                                    <div class="milestone-container">
+                                        <?php
+                                        $serializedDataFromDatabase = $row['Milestones'];
+                                        $serializedDataFromDatabase_status = $row['Milestones_status'];
+                                        $serializedDataFromDatabase_dates = $row['Milestones_dates'];
+                                        $milestones = unserialize($serializedDataFromDatabase);
+                                        $milestones_status = unserialize($serializedDataFromDatabase_status);
+                                        $milestones_dates = unserialize($serializedDataFromDatabase_dates);
+                                        $currentDate = date("Y-m-d");
+
+                                        for ($ind = 0; $ind < count($milestones); $ind++) {
+                                            $date1 = strtotime($currentDate);
+                                            $date2 = strtotime($milestones_dates[$ind]);
+                                            // echo $milestones_dates[$ind];
+                                            // echo $date2;
+                                            if (($date1 > $date2) && $milestones_status[$ind] != "complete") {
+                                                $milestones_status[$ind] = "due";
+                                                echo '<div class="milestone-container-dot milestone-due"></div>';
+                                            } elseif ($milestones_status[$ind] == "complete") {
+                                                echo '<div class="milestone-container-dot milestone-complete"></div>';
+                                            } elseif ($milestones_status[$ind] == "ongoing") {
+                                                echo '<div class="milestone-container-dot milestone-ongoing"></div>';
+                                            } else {
+                                                echo '<div class="milestone-container-dot milestone-coming"></div>';
+                                            }
+                                            if ($ind < count($milestones) - 1) {
+                                                echo '<div class="milestone-container-line"></div>';
+                                            }
                                         }
-                                        if ($ind < count($milestones) - 1) {
-                                            echo '<div class="milestone-container-line"></div>';
-                                        }
-                                    }
-                                    ?>
+                                        ?>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                 <?php
+                    }
                 }
+            } catch (Exception $e) {
+                // Code to handle the exception
+                echo "An exception occurred: " . $e->getMessage();
             }
 
                 ?>
-                    </a>
+                        </a>
         </div>
     </div>
     <a href="Submission_form.php">
