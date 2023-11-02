@@ -1,7 +1,39 @@
 <?php
 require './db_connection.php';
 require './authchecker.php';
-$query = "SELECT * FROM Project";
+require "./php/currentuser_details.php";
+
+$userdetail = currentuserdetails();
+$proresult;
+if ($userdetail) {
+    $employeeId = $userdetail["Employee_id"];
+
+    $orgcheck = "SELECT * FROM Organization WHERE Employee_id = ?";
+    $stmt = $conn->prepare($orgcheck);
+
+    if ($stmt) { // Check if the prepare method succeeded
+        $stmt->bind_param("i", $employeeId);
+        $stmt->execute();
+        $orgResult = $stmt->get_result();
+
+        if ($orgResult->num_rows > 0) {
+            $orgrow = $orgResult->fetch_assoc();
+            $organizationName = $orgrow["Organization_Name"];
+            $query = "SELECT * FROM Project Where Organization_Name='$organizationName'";
+            $proresult = $conn->query($query);
+        } else {
+            $orgrow = $orgResult->fetch_assoc();
+            $organizationName = $orgrow["Organization_Name"];
+            $query = "SELECT * FROM Project WHERE Employee_id = $employeeId";
+            $proresult = $conn->query($query);
+        }
+    } else {
+        echo "Error preparing the organization query: " . $conn->error;
+    }
+} else {
+    echo "Error: User details not found.";
+}
+
 
 $result = $conn->query($query);
 $username;
@@ -81,8 +113,8 @@ $username;
 
         <!-- Project Overview Container -->
         <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+        if ($proresult->num_rows > 0) {
+            while ($row = $proresult->fetch_assoc()) {
                 // Access individual fields by column name
                 $pid = $row["Project_ID"];
                 $title = $row["Title"];
