@@ -60,6 +60,14 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="Styles\All.css" />
     <link rel="stylesheet" href="Styles\Typography.css" />
     <title>Project Submission</title>
+    <style>
+        #error-message {
+            display: none;
+            color: red;
+            font-weight: 400;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -82,7 +90,7 @@ if (isset($_POST["submit"])) {
                 <input type="text" name="title" placeholder="Enter Name" class="custom-textfield">
                 <br>
                 <label class="container-subhead">Estimated Completion - </label>
-                <input type="date" name="estimated_completion" class="custom-textfield">
+                <input onchange="checkdate(this)" type="date" name="estimated_completion" id="estimation_date" class="custom-textfield">
                 <br>
                 <label class="container-subhead">Estimated Cost - </label>
                 <input type="text" name="cost" placeholder="Estimated cost" class="custom-textfield">
@@ -104,6 +112,7 @@ if (isset($_POST["submit"])) {
                     <textarea placeholder="Milestone 1 text" name="milestones[]" class="custom-textfield" id="milestone"></textarea>
                     <input onchange="checkdate(this)" type="date" placeholder="Milestone 1 date" name="milestones_dates[]" class="custom-textfield" id="milestone_dates" />
                 <p class="logout" onclick="addmilestonefields()"> Add more milestone</p>
+                <p id="error-message"></p>
                 </p>
                 <br>
 
@@ -126,21 +135,34 @@ if (isset($_POST["submit"])) {
         <br>
 
         <div class="logout" style="margin-bottom: 30px;">
-            <input type="submit" value="Submit" name="submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
+            <input type="submit" value="Submit" name="submit" id="submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
         </div>
         </form>
     </div>
     </div>
 </body>
 <script>
+    let a = document.getElementsByClassName("custom-textfield");
+    let counter = a.length - 1;
+
+    console.log(counter, a.length)
+    let lastmilestone = a[counter];
+
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
 
     }
     let milestonecount = 1;
+    let milestoneInputs = [];
 
     function addmilestonefields(e) {
         milestonecount++;
+
+        // Remove event listeners for previous milestones
+        for (const input of milestoneInputs) {
+            input.removeEventListener('change', handleMilestoneChange);
+        }
+
         const milestonesContainer = document.getElementById('milestones');
         const newMilestoneTextarea = document.createElement('textarea');
         const newMilestoneInput = document.createElement('input');
@@ -154,21 +176,80 @@ if (isset($_POST["submit"])) {
         newMilestoneTextarea.placeholder = `Milestone ${milestonecount} text`;
         newMilestonelabel.className = 'container-subhead';
         newMilestonelabel.innerText = `Milestone ${milestonecount}:-`;
-        newMilestoneInput.type = "date"
-        newMilestoneInput.addEventListener('change', () => {
-            checkdate(newMilestoneInput);
-        });
+        newMilestoneInput.type = "date";
+
+        // Add event listener for the new milestone input
+        newMilestoneInput.addEventListener('change', handleMilestoneChange);
+        milestoneInputs.push(newMilestoneInput);
+
         milestonesContainer.appendChild(newMilestonelabel);
         milestonesContainer.appendChild(newMilestoneTextarea);
         milestonesContainer.appendChild(newMilestoneInput);
-        // newMilestonelabel.name = 'milestones[]'; 
-
-
     }
 
+    estimation_date.addEventListener("change", (e) => {
+        console.log("welcome to ")
+        let error_message = document.getElementById("error-message");
+        let estimated_completion = document.getElementsByName("estimated_completion")[0].value;
+
+        if (estimated_completion == "") {
+            error_message.innerHTML = "First enter Estimation Completion date";
+            submit.disabled = true
+
+            error_message.style.display = "block";
+            return;
+        }
+
+        const selectedDate = new Date(lastmilestone.value);
+        const estimatedCompletionDate = new Date(estimated_completion);
+
+        selectedDate.setHours(0, 0, 0, 0);
+        estimatedCompletionDate.setHours(0, 0, 0, 0);
+
+        if (selectedDate.getTime() === estimatedCompletionDate.getTime()) {
+            error_message.innerHTML = "";
+            error_message.style.display = "none";
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+            error_message.style.display = "block";
+            error_message.innerHTML = "Estimation completion date does not match with the last milestone.";
+        }
+    });
+
+    function handleMilestoneChange(e) {
+        let error_message = document.getElementById("error-message");
+        let estimated_completion = document.getElementsByName("estimated_completion")[0].value;
+
+        if (estimated_completion == "") {
+            error_message.innerHTML = "First enter Estimation Completion date";
+            submit.disabled = true
+
+            error_message.style.display = "block";
+            return;
+        }
+
+        const selectedDate = new Date(e.target.value);
+        const estimatedCompletionDate = new Date(estimated_completion);
+
+        selectedDate.setHours(0, 0, 0, 0);
+        estimatedCompletionDate.setHours(0, 0, 0, 0);
+
+        if (selectedDate.getTime() === estimatedCompletionDate.getTime()) {
+            error_message.innerHTML = "";
+            error_message.style.display = "none";
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+            error_message.style.display = "block";
+            error_message.innerHTML = "Estimation completion date does not match with the last milestone.";
+        }
+    }
+
+
     function checkdate(obj) {
+
         let date = new Date();
-        console.log(obj.value)
         if (new Date(obj.value) < date) {
             obj.value = "";
             return alert("dont enter past date")

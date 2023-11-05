@@ -18,16 +18,6 @@ $username;
     <link rel="stylesheet" href="Styles\Typography.css" />
 
     <title>Logs</title>
-    <style>
-        a {
-            color: var(--dark-color);
-        }
-
-        .active {
-            color: white;
-
-        }
-    </style>
 
 </head>
 
@@ -49,12 +39,11 @@ $username;
         <!-- Scrolling tabs for filtering the data -->
         <div class="tab-container">
             <div class="tabs" id="tabs">
-            <a href="./Notification.php"><button class="tab active " data-tab="all">All</button></a>
-            <a href="./Approve_Notification.php"><button class="tab " data-tab="approved">Approved</button></a>
-            <a href="./><button class="tab" data-tab="disapproved">Disapproved </a></button>
-                <button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required.php"><a>Action Required </a></a></button>
-                <button class="tab" data-tab="updated"><a>Updated </a></button>
-
+                <button class="tab active" data-tab="all">All</button>
+                <button class="tab" data-tab="approved">Approved</button>
+                <button class="tab" data-tab="disapproved">Disapproved</button>
+                <button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required.php">Action Required</a></button>
+                <button class="tab" data-tab="updated">Updated</button>
             </div>
         </div>
         <script src="JavaScript\dragtabs.js"></script>

@@ -606,7 +606,7 @@ select {
 /* Tabs style */
 .tab {
   width: auto;
-  height: 40px;
+  height: 60px;
   font-size: 16px;
   font-weight: 500;
   /* padding: 3px 40px; */
@@ -619,11 +619,17 @@ select {
   border-radius: 10px;
   cursor: pointer;
 }
+.tab {
+  color: var(--dark-color);
+}
 
 /* Active tab style */
 .tab.active {
   background-color: var(--dark-color);
   color: var(--body-background);
+
+  /* color: white; */
+  text-decoration: none;
 }
 
 /* Full width button */

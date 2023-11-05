@@ -34,20 +34,7 @@ if ($result->num_rows > 0){
 else{
     echo "error";
 }
-if(isset($_POST['Accept'])){
-    // echo $Role;
-    // $Search_query = "SELECT * FROM Organization WHERE REmployee = '$email'";
 
-    // $Accept_query = "INSERT INTO $orgName (Employee_Id, Employee_Name, Access, Employee_Email) VALUES ('$orgName', '$orgEmail', '$designation', '$department','$branch','$column1Value','$orgContact','$useremail')";
-
-
-
-}
-if(isset($_POST['Reject'])){
-
-
-}
-//
 $query1 = "SELECT * FROM $orgName"."_" ."$employee_id";
 // echo $query1;
 $result1 = $conn->query($query1);

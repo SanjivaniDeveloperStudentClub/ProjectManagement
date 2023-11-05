@@ -1,6 +1,6 @@
 <?php
 require "./db_connection.php";
-$useremail =$_COOKIE['useremail'];
+$useremail = $_COOKIE['useremail'];
 echo $useremail;
 $query = "SELECT * FROM Employee WHERE Email = '$useremail'";
 $result = $conn->query($query);
@@ -8,17 +8,13 @@ if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     // Access individual fields by column name
     $Organization_Name = $row["Organization_Name"];
-    if(!($Organization_Name=="Your Organization")){
+    if (!($Organization_Name == "Your Organization")) {
+    } else {
+      echo "alert('join orgnization first')";
+      header("Location:index.php");
     }
-    else{
-        echo "alert('join orgnization first')";
-        header("Location:home.php");
-    }
-// echo $column1Value;
-}
-}
-else{
+    // echo $column1Value;
+  }
+} else {
   header("Location:index.php");
 }
-
-?>
