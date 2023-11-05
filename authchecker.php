@@ -1,7 +1,6 @@
 <?php
 require "./db_connection.php";
 $useremail = $_COOKIE['useremail'];
-echo $useremail;
 $query = "SELECT * FROM Employee WHERE Email = '$useremail'";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {

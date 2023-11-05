@@ -23,7 +23,16 @@ $username;
     <link rel="stylesheet" href="Styles\Typography.css" />
 
     <title>Logs</title>
+    <style>
+        a {
+            color: var(--dark-color);
+        }
 
+        .active {
+            color: white;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -44,11 +53,12 @@ $username;
         <!-- Scrolling tabs for filtering the data -->
         <div class="tab-container">
             <div class="tabs" id="tabs">
-                <button class="tab " data-tab="all"><a href="./Notification.php">All</a></button>
-                <button class="tab active" data-tab="approved"><a href="./Approve_Notification.php">Approved</a></button>
-                <button class="tab" data-tab="disapproved"><a>Disapproved </a></button>
-                <button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required.php"><a>Action Required </a></a></button>
-                <button class="tab" data-tab="updated"><a>Updated </a></button>
+                <href= href="./Notification.php"><button class="tab  " data-tab="all">All</button></href=>
+                <a href="./Approve_Notification.php"><button class="tab active" data-tab="approved">Approved</button></a>
+                <a href="./Dissapprove_Notification.php"><button class=" tab" data-tab="disapproved">Disapproved </a></button>
+                <a href="Action_Required_Notification.php"><button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required_Notification.php">Action Required</button> </a>
+                <a href=""><button class="tab" data-tab="updated">Updated </button></a>
+
             </div>
         </div>
         <script src="JavaScript\dragtabs.js"></script>

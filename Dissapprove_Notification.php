@@ -1,9 +1,14 @@
 <?php
 require './db_connection.php';
 require './authchecker.php';
-$query = "SELECT * FROM Project";
-
+require './php/currentuser_details.php';
+$userdetail = currentuserdetails();
+if (!$userdetail) {
+    header("Location:index.php");
+}
+$query = "SELECT * FROM Project WHERE Organization_Name = '" . $userdetail['Organization_Name'] . "' AND Status = 'Disapproved'";
 $result = $conn->query($query);
+
 $username;
 ?>
 <!DOCTYPE html>
@@ -18,7 +23,16 @@ $username;
     <link rel="stylesheet" href="Styles\Typography.css" />
 
     <title>Logs</title>
+    <style>
+        a {
+            color: var(--dark-color);
+        }
 
+        .active {
+            color: white;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -39,17 +53,18 @@ $username;
         <!-- Scrolling tabs for filtering the data -->
         <div class="tab-container">
             <div class="tabs" id="tabs">
-                <button class="tab active" data-tab="all">All</button>
-                <button class="tab" data-tab="approved">Approved</button>
-                <button class="tab" data-tab="disapproved">Disapproved</button>
-                <button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required.php">Action Required</a></button>
-                <button class="tab" data-tab="updated">Updated</button>
+                <a href="./Notification.php"><button class="tab  " data-tab="all">All</button></a>
+                <a href="./Approve_Notification.php"><button class="tab " data-tab="approved">Approved</button></a>
+                <a href="./Dissapprove_Notification.php"><button class=" tab active" data-tab="disapproved">Disapproved </a></button>
+                <a href="Action_Required_Notification.php"><button class="tab " data-tab="action"><a style="text-decoration: none;" href="Action_Required_Notification.php">Action Required</button> </a>
+                <a href=""><button class="tab" data-tab="updated">Updated </button></a>
+
             </div>
         </div>
         <script src="JavaScript\dragtabs.js"></script>
         <!-- Project Overview Container -->
         <?php
-        if ($result->num_rows > 0) {
+        if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 // Access individual fields by column name
                 $pid = $row["Project_ID"];

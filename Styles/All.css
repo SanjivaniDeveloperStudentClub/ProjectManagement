@@ -606,7 +606,7 @@ select {
 /* Tabs style */
 .tab {
   width: auto;
-  height: 60px;
+  height: 40px;
   font-size: 16px;
   font-weight: 500;
   /* padding: 3px 40px; */
