@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-    <link rel="stylesheet" href="Styles\All.css" />  
-    <link rel="stylesheet" href="Styles\Typography.css" />  
-    
+    <link rel="stylesheet" href="Styles\All.css" />
+    <link rel="stylesheet" href="Styles\Typography.css" />
+
     <title>Dashboard</title>
 </head>
 
@@ -40,11 +40,11 @@
             <thead class="container-body">
                 <tr>
                     <td>Sr. No.</td>
-                
+
                     <td>Branch</td>
-                
+
                     <td>Edit</td>
-                
+
                     <td>Delete</td>
                 </tr>
             </thead>
@@ -57,16 +57,16 @@
                         Sanjivani K.B.P. Polytechnic
                     </td>
                     <td>
-                        <input type="button" class="small-button safe-button" value="Edit" >
+                        <input type="button" class="small-button safe-button" value="Edit">
                     </td>
                     <td>
-                        <input type="button" class="small-button danger-button" value="Delete" >
+                        <input type="button" class="small-button danger-button" value="Delete">
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    
+
     <br>
     <br>
 
@@ -79,11 +79,11 @@
             <thead class="container-body">
                 <tr>
                     <td>Sr. No.</td>
-                
+
                     <td>Department</td>
-                
+
                     <td>Edit</td>
-                
+
                     <td>Delete</td>
                 </tr>
             </thead>
@@ -96,10 +96,10 @@
                         Computer Technology
                     </td>
                     <td>
-                        <input type="button" class="small-button safe-button" value="Edit" >
+                        <input type="button" class="small-button safe-button" value="Edit">
                     </td>
                     <td>
-                        <input type="button" class="small-button danger-button" value="Delete" >
+                        <input type="button" class="small-button danger-button" value="Delete">
                     </td>
                 </tr>
             </tbody>
@@ -118,13 +118,13 @@
             <thead class="container-body">
                 <tr>
                     <td>Sr. No.</td>
-                
+
                     <td>Post</td>
 
                     <td>Role</td>
-                
+
                     <td>Edit</td>
-                
+
                     <td>Delete</td>
                 </tr>
             </thead>
@@ -140,16 +140,16 @@
                         Admin
                     </td>
                     <td>
-                        <input type="button" class="small-button safe-button" value="Edit" >
+                        <input type="button" class="small-button safe-button" value="Edit">
                     </td>
                     <td>
-                        <input type="button" class="small-button danger-button" value="Delete" >
+                        <input type="button" class="small-button danger-button" value="Delete">
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-        
+
     </div>
 </body>
 

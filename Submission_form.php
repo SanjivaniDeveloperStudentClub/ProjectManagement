@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
     <title>Project Submission</title>
     <style>
         #error-message {
-            display: none;
+            /* display: none; */
             color: red;
             font-weight: 400;
         }
@@ -112,7 +112,7 @@ if (isset($_POST["submit"])) {
                     <textarea placeholder="Milestone 1 text" name="milestones[]" class="custom-textfield" id="milestone"></textarea>
                     <input onchange="checkdate(this)" type="date" placeholder="Milestone 1 date" name="milestones_dates[]" class="custom-textfield" id="milestone_dates" />
                 <p class="logout" onclick="addmilestonefields()"> Add more milestone</p>
-                <p id="error-message"></p>
+                <p id="error-message">Atleast two milestone require</p>
                 </p>
                 <br>
 
@@ -135,7 +135,7 @@ if (isset($_POST["submit"])) {
         <br>
 
         <div class="logout" style="margin-bottom: 30px;">
-            <input type="submit" value="Submit" name="submit" id="submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
+            <input disabled="true" type="submit" value="Submit" name="submit" id="submit" class="safe-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
         </div>
         </form>
     </div>
@@ -144,6 +144,7 @@ if (isset($_POST["submit"])) {
 <script>
     let a = document.getElementsByClassName("custom-textfield");
     let counter = a.length - 1;
+    let error_message = document.getElementById("error-message");
 
     console.log(counter, a.length)
     let lastmilestone = a[counter];
@@ -157,7 +158,6 @@ if (isset($_POST["submit"])) {
 
     function addmilestonefields(e) {
         milestonecount++;
-
         // Remove event listeners for previous milestones
         for (const input of milestoneInputs) {
             input.removeEventListener('change', handleMilestoneChange);
@@ -185,6 +185,10 @@ if (isset($_POST["submit"])) {
         milestonesContainer.appendChild(newMilestonelabel);
         milestonesContainer.appendChild(newMilestoneTextarea);
         milestonesContainer.appendChild(newMilestoneInput);
+        console.log(milestonecount);
+        if (milestonecount > 1) {
+            error_message.innerHTML = "";
+        }
     }
 
     estimation_date.addEventListener("change", (e) => {
@@ -215,10 +219,10 @@ if (isset($_POST["submit"])) {
             error_message.style.display = "block";
             error_message.innerHTML = "Estimation completion date does not match with the last milestone.";
         }
+
     });
 
     function handleMilestoneChange(e) {
-        let error_message = document.getElementById("error-message");
         let estimated_completion = document.getElementsByName("estimated_completion")[0].value;
 
         if (estimated_completion == "") {
