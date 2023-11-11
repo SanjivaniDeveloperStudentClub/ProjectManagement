@@ -64,7 +64,7 @@ $username;
         <script src="JavaScript\dragtabs.js"></script>
         <!-- Project Overview Container -->
         <?php
-        if ($result && $result->num_rows > 0) {
+        if ($result  && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 // Access individual fields by column name
                 $pid = $row["Project_ID"];

@@ -12,8 +12,7 @@ if (isset($_POST["submit"])) {
     $requirements = $_POST['requirements'];
     $document = $_POST['document'];
     $milestones_dates  = $_POST['milestones_dates'];
-    $useremail = $_COOKIE['useremail'];
-    $milestones =  array();
+/    $milestones =  array();
     $milestones_status =  array();
     for ($i = 0; $i < count($_POST["milestones"]); $i++) {
         $milestones[] = $_POST["milestones"][$i];
@@ -34,10 +33,15 @@ if (isset($_POST["submit"])) {
             $Organization_Name = $row["Organization_Name"];
             echo $Organization_Name;
         }
+        $query_1 = "SELECT * FROM Organization Where Organization_Name='$Organization_Name'";
+        $result_1 = $conn->query($query_1);
+        $row_1 = $result_1->fetch_assoc();
+        $Approval_status = $row_1['Access_Level'];
+        echo $Approval_status;
     }
     // Insert data into the Project table
-    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones,Milestones_status,Milestones_dates)
-        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name','$serializedMilestones','$serializedMilestones_status','$serializedMilestones_dates')";
+    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones,Milestones_status,Milestones_dates,Approval_status)
+        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name','$serializedMilestones','$serializedMilestones_status','$serializedMilestones_dates','$Approval_status')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data inserted successfully!";

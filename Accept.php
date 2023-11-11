@@ -1,9 +1,8 @@
 <?php
 require "./db_connection.php";
-// echo $_GET["emp_id"];
-if (isset($_GET['emp_id'])) {
+print_r($_POST);
+if (isset($_POST['Accept'])) {
     $email = $_COOKIE['useremail'];
-
     $orgName;
     $orgid;
     $query_11 = "SELECT * FROM Employee WHERE Email = '$email'";
@@ -41,7 +40,7 @@ if (isset($_GET['emp_id'])) {
         $Request_id = $row["Request_id"];
         $employee_id = $row["REmployee_id"];
         $employee_name = $row["REmployee_Name"];
-        $Role = $row["Role"];
+        $Role = $_POST['Role'];
         $Search_query = "SELECT * FROM Employee where Employee_id='$employee_id'";
         $result2 = $conn->query($Search_query);
         if ($result2->num_rows > 0) {
@@ -51,7 +50,7 @@ if (isset($_GET['emp_id'])) {
             // echo $employee_email;
             $delete_query = "DELETE FROM $orgName" . "_" . "$orgid where REmployee_id='$employee_id'";
             //   echo $delete_query;
-            $result11 = $conn->query($delete_query);
+            // $result11 = $conn->query($delete_query);
             // echo $result11;
             $Accept_query = "INSERT INTO $orgName (Employee_Id, Employee_Name, Access, Employee_Email) VALUES ( '$employee_id', '$employee_name', '$Role','$employee_email')";
             $result1 = $conn->query($Accept_query);
@@ -61,8 +60,19 @@ if (isset($_GET['emp_id'])) {
             SET Organization_Name = '$orgName'
             WHERE Employee_id='$employee_id'";
             $update_result = $conn->query($upate_query);
-            // echo $update_result;
+            $upate_query = "UPDATE employee
+            SET AdminLevel = '$Role'
+            WHERE Employee_id='$employee_id'";
+            $update_result = $conn->query($upate_query);
+
+            $delete_query = "DELETE FROM $orgName" . "_" . "$orgid where Request_id=$Request_id";
+            $result11 = $conn->query($delete_query);
+            echo $delete_query;
             header("Location:join_Request.php");
+
+            // echo $conn->error;
+            // echo $update_result;
+            // header("Location:join_Request.php");
         } else {
             echo "invalid access";
             header("Location:index.php");
@@ -70,13 +80,10 @@ if (isset($_GET['emp_id'])) {
     } else {
         echo "page not found";
     }
-
-
-
     // $result1 = $conn->query($query1);
 } else {
     $email = $_COOKIE['useremail'];
-    $empid = $_GET["empid"];
+    $empid = $_POST["emp_id"];
     $orgName;
     $orgid;
     $query_11 = "SELECT * FROM Employee WHERE Email = '$email'";
@@ -100,8 +107,7 @@ if (isset($_GET['emp_id'])) {
     }
 
     $delete_query = "DELETE FROM $orgName" . "_" . "$orgid where Request_id=$empid";
-    //   echo $delete_query;
     $result11 = $conn->query($delete_query);
-    //   echo $result11;
+    echo $delete_query;
     header("Location:join_Request.php");
 }

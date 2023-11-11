@@ -4,33 +4,31 @@ require "./db_connection.php";
 
 // Include your database connection code here
 $useremail = $_COOKIE['useremail'];
-if(!($useremail)){
-header("Location:index.php");
+if (!($useremail)) {
+    header("Location:index.php");
 }
 $check_query = "SELECT * FROM Organization WHERE Email = '$useremail'";
 $result = $conn->query($check_query);
 $Access;
 $check_query2 = "SELECT * FROM Employee WHERE Email = '$useremail'";
 $result2 = $conn->query($check_query2);
-   if($result2->num_rows > 0){
+if ($result2->num_rows > 0) {
     $row = $result2->fetch_assoc();
     $orgName = $row["Organization_Name"];
-    if($orgName=="Your Organization"){
+    $AdminLevel = $row["AdminLevel"];
+    if ($orgName == "Your Organization") {
         $orgName = "";
-
-    }
-    else{
+    } else {
         $check_query2 = "SELECT * FROM $orgName WHERE Employee_Email = '$useremail'";
         $result2 = $conn->query($check_query2);
-        if( $result2->num_rows > 0){
+        if ($result2->num_rows > 0) {
             $row = $result2->fetch_assoc();
             $Access = $row["Access"];
+        } else {
+            $orgName = "";
+        }
     }
-    else{
-        $orgName="";
-    }
-   }
-   }
+}
 
 
 ?>
@@ -51,48 +49,48 @@ $result2 = $conn->query($check_query2);
 </head>
 
 <body>
-<!-- <div class="container"> -->
-        <!-- App Name -->
-        <nav class="top">
-            <div class="large-head">
-                <div name="title">Project</div>
-            </div>
-            <div class="small-circle">
-                <img src="img\search.png" alt="Back arrow">
-            </div>
-        </nav>
+    <!-- <div class="container"> -->
+    <!-- App Name -->
+    <nav class="top">
+        <div class="large-head">
+            <div name="title">Project</div>
+        </div>
+        <div class="small-circle">
+            <img src="img\search.png" alt="Back arrow">
+        </div>
+    </nav>
 
-        <!-- Home page body -->
-        <div class="container">
+    <!-- Home page body -->
+    <div class="container">
 
-            <!-- Profile Overview Container -->
-            <div class="logobox">
-                <div class="medium-logo">
-                    <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
-                </div>
-            </div>
-
-            <!-- User Name -->
-            <div class="clientname">
-                <p class="container-head">Developer Students Club</p>
-            </div>
-
-            <!-- Post -->
-            <div class="clientname">
-                <p class="container-head">Club</p>
+        <!-- Profile Overview Container -->
+        <div class="logobox">
+            <div class="medium-logo">
+                <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
             </div>
         </div>
 
-        <a href="EditProfile.php">
-            <!-- Submit button -->
-            <div class="container">
-                <input type="button" value="Edit Profile" class="edit-button">
-            </div>
-        </a>
-<?php
-if (($result->num_rows > 0)||$Access=="admin"||$Access=="Admin") {
-    
-?>
+        <!-- User Name -->
+        <div class="clientname">
+            <p class="container-head">Developer Students Club</p>
+        </div>
+
+        <!-- Post -->
+        <div class="clientname">
+            <p class="container-head">Club</p>
+        </div>
+    </div>
+
+    <a href="EditProfile.php">
+        <!-- Submit button -->
+        <div class="container">
+            <input type="button" value="Edit Profile" class="edit-button">
+        </div>
+    </a>
+    <?php
+    if (($result->num_rows > 0) || $AdminLevel != "Normal") {
+
+    ?>
         <div class="container container-large-head">
             <span style="text-align: left;">Admin</span>
         </div>
@@ -140,62 +138,62 @@ if (($result->num_rows > 0)||$Access=="admin"||$Access=="Admin") {
             </a>
 
         </div>
-<?php
-}
+    <?php
+    }
 
-?>
-        <div class="container container-large-head">
-            <span style="text-align: left;">Others</span>
-        </div>
+    ?>
+    <div class="container container-large-head">
+        <span style="text-align: left;">Others</span>
+    </div>
 
-        <div class="container">
+    <div class="container">
 
-            <a href="Help_Support.php">
-                <div class="wrapper">
-                    <div class="container-row">
-                        <div class="small-logo">
-                            <img src="images\help and support.svg" alt="dsc_logo" style="width: 30px;">
-                        </div>
-                        <!-- <div class="clientname" > -->
-                        <div class="container-text">
-                            <p class="container-head">Help and Support</p>
-                        </div>
+        <a href="Help_Support.php">
+            <div class="wrapper">
+                <div class="container-row">
+                    <div class="small-logo">
+                        <img src="images\help and support.svg" alt="dsc_logo" style="width: 30px;">
+                    </div>
+                    <!-- <div class="clientname" > -->
+                    <div class="container-text">
+                        <p class="container-head">Help and Support</p>
                     </div>
                 </div>
-            </a>
+            </div>
+        </a>
 
-            <a href="About.php">
-                <div class="wrapper">
-                    <div class="container-row">
-                        <div class="small-logo">
-                            <img src="images\About us.svg" alt="dsc_logo" style="width: 30px;">
-                        </div>
-                        <!-- <div class="clientname" > -->
-                        <div class="container-text">
-                            <p class="container-head">About us</p>
-                        </div>
+        <a href="About.php">
+            <div class="wrapper">
+                <div class="container-row">
+                    <div class="small-logo">
+                        <img src="images\About us.svg" alt="dsc_logo" style="width: 30px;">
+                    </div>
+                    <!-- <div class="clientname" > -->
+                    <div class="container-text">
+                        <p class="container-head">About us</p>
                     </div>
                 </div>
-            </a>
-
-        </div>
-
-
-        <form action="index.php">
-            <div class="logout" style="margin-bottom: 100px;">
-                <input type="submit" value="Logout" class="danger-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
             </div>
-        </form>
+        </a>
 
-        <!-- Bottom Navigation Bar -->
-        <div class="bnav-wrapper">
-            <div class="bnav">
-                <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
-                <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
-                <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
-                <a href="Profile.php">Profile</a>
-            </div>
+    </div>
+
+
+    <form action="index.php">
+        <div class="logout" style="margin-bottom: 100px;">
+            <input type="submit" value="Logout" class="danger-button container-medhead" style="text-align: center; justify-content: center; color: var(--body-background);">
         </div>
+    </form>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bnav-wrapper">
+        <div class="bnav">
+            <a href="Home.php"><img src="images/home.svg" alt="Home"></a>
+            <a href="Logs.php"><img src="images/Logs.svg" alt="Logs"></a>
+            <a href="Notification.php"><img src="images/Notification.svg" alt="Notifications"></a>
+            <a href="Profile.php">Profile</a>
+        </div>
+    </div>
 
     <!-- </div> -->
 
