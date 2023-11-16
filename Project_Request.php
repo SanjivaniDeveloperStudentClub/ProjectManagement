@@ -60,17 +60,22 @@ echo $Approval_status;
         $estimated_completion = $row["Estimated_Completion"];
         $startedDate = $row["Started_Date"];
         $Organization_Name = $row["Organization_Name"];
-        $Approval_status = unserialize($row["Approval_status"]);
+        $ss = $row["Approval_status"];
+        $Approval_status = unserialize($ss);
     ?>
         <!-- Project Overview Container -->
         <?php
+        $i;
+        print_r($Approval_status);
         for ($i = count($Approval_status) - 1; $i >= 0; $i--) {
-          if ($Approval_status[$i] == "Approve") {
+          if ($Approval_status[$i] == "Normal") {
           } else {
             break;
           }
         }
-        if ($Approve_status[$i] == $AdminLevel) {
+        echo $AdminLevel;
+        echo $Approval_status[$i];
+        if ($Approval_status[($i)] == $AdminLevel) {
           echo '<a href="Details.php?pid=' . $pid . '">'
         ?>
           <div class="wrapper">

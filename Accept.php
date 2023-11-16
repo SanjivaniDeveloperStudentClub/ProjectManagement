@@ -8,10 +8,12 @@ if (isset($_POST['Accept'])) {
     $query_11 = "SELECT * FROM Employee WHERE Email = '$email'";
     $result_11 = $conn->query($query_11);
     $employee_id;
+    $AdminLevel;
     $query;
     if ($result_11->num_rows > 0) {
         $row_11 = $result_11->fetch_assoc();
         $orgName = $row_11["Organization_Name"];
+        $AdminLevel = $row_11["AdminLevel"];
     }
     if ($orgName == "Your Organization") {
         $query = "SELECT * FROM Organization WHERE Email = '$email'";

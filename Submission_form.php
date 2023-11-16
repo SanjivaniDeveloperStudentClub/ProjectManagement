@@ -11,8 +11,9 @@ if (isset($_POST["submit"])) {
     $details = $_POST['details'];
     $requirements = $_POST['requirements'];
     $document = $_POST['document'];
+    $useremail = $_COOKIE['useremail'];
     $milestones_dates  = $_POST['milestones_dates'];
-/    $milestones =  array();
+    $milestones =  array();
     $milestones_status =  array();
     for ($i = 0; $i < count($_POST["milestones"]); $i++) {
         $milestones[] = $_POST["milestones"][$i];
@@ -22,14 +23,15 @@ if (isset($_POST["submit"])) {
     $serializedMilestones_status = serialize($milestones_status);
     $serializedMilestones_dates = serialize($milestones_dates);
     // You can also process the documents here if needed
-    echo $serializedMilestones_dates;
     $query = "SELECT * FROM Employee WHERE Email = '$useremail'";
     $result = $conn->query($query);
     $username;
+    $Organization_Name;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             // Access individual fields by column name
             $eid = $row["Employee_id"];
+            echo $eid;
             $Organization_Name = $row["Organization_Name"];
             echo $Organization_Name;
         }
@@ -37,7 +39,6 @@ if (isset($_POST["submit"])) {
         $result_1 = $conn->query($query_1);
         $row_1 = $result_1->fetch_assoc();
         $Approval_status = $row_1['Access_Level'];
-        echo $Approval_status;
     }
     // Insert data into the Project table
     $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones,Milestones_status,Milestones_dates,Approval_status)
@@ -47,7 +48,7 @@ if (isset($_POST["submit"])) {
         echo "Data inserted successfully!";
         header("Location:home.php");
     } else {
-        // echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 // Close the database connection
