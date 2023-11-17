@@ -41,8 +41,8 @@ if (isset($_POST["submit"])) {
         $Approval_status = $row_1['Access_Level'];
     }
     // Insert data into the Project table
-    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones,Milestones_status,Milestones_dates,Approval_status)
-        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name','$serializedMilestones','$serializedMilestones_status','$serializedMilestones_dates','$Approval_status')";
+    $sql = "INSERT INTO Project ( Started_Date,Estimated_Completion, Cost, Summary, Details, Requirements, Documents, Suggestions, Department,title,Employee_id,Status,Organization_Name,Milestones,Milestones_status,Milestones_dates,Approval_status,Update_status)
+        VALUES ('$currentDate', '$estimated_completion', '$cost', '$summary', '$details', '$requirements', '$document', NULL, NULL,'$title','$eid','pending','$Organization_Name','$serializedMilestones','$serializedMilestones_status','$serializedMilestones_dates','$Approval_status','No')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data inserted successfully!";

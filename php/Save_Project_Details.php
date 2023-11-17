@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $serializedMilestones = serialize($milestones);
     $serializedMilestones_status = serialize($milestones_status);
     // You can also process the documents here if needed
-    $sql = "UPDATE Project SET Summary = '$Summary', Details = '$Details', Documents ='$Documents',title='$title',Milestones = '$serializedMilestones',Milestones_status = '$serializedMilestones_status',Requirements='$Requirements'
+    $sql = "UPDATE Project SET Summary = '$Summary', Details = '$Details', Documents ='$Documents',title='$title',Milestones = '$serializedMilestones',Milestones_status = '$serializedMilestones_status',Requirements='$Requirements',Update_status = 'Updated'
 WHERE Project_ID=$pid";
 
     if ($conn->query($sql) === TRUE) {

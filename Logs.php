@@ -22,9 +22,8 @@ if ($userdetail) {
             $query = "SELECT * FROM Project Where Organization_Name='$organizationName'";
             $proresult = $conn->query($query);
         } else {
-            $orgrow = $orgResult->fetch_assoc();
-            $organizationName = $orgrow["Organization_Name"];
-            $query = "SELECT * FROM Project WHERE Employee_id = $employeeId";
+            $organizationName = $userdetail["Organization_Name"];
+            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName'";
             $proresult = $conn->query($query);
         }
     } else {

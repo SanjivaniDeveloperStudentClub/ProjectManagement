@@ -51,9 +51,9 @@ $username;
             <div class="tabs" id="tabs">
                 <a href="./Notification.php"><button class="tab active " data-tab="all">All</button></a>
                 <a href="./Approve_Notification.php"><button class="tab " data-tab="approved">Approved</button></a>
-                <a href="./Dissapprove_Notification.php"><button class=" tab" data-tab="disapproved">Disapproved </a></button>
-                <a href="Action_Required_Notification.php"><button class="tab" data-tab="action"><a style="text-decoration: none;" href="Action_Required_Notification.php">Action Required</button> </a>
-                <a href=""><button class="tab" data-tab="updated">Updated </button></a>
+                <a href="./Dissapprove_Notification.php"><button class=" tab" data-tab="disapproved">Disapproved </button> </a>
+                <a href="Action_Required_Notification.php"><button class="tab" data-tab="action">Action Required</button> </a>
+                <a href="./Updated_Notification.php"><button class="tab" data-tab="updated">Updated </button></a>
 
             </div>
         </div>
