@@ -44,13 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       echo $result_2->num_rows;
       if ($result_2->num_rows > 0) {
         echo "already join the orignization";
+        header("Location:home.php");
       } else {
         // if()
         $row = $result_2->fetch_assoc();
         $check_query3 = "SELECT * FROM " . $orgName . "_" . $employee_id . " WHERE REmployee_id = '$userid'";
-        echo $check_query3;
         $result_3 = $conn->query($check_query3);
-        echo $result_3->num_rows;
         if (!$result_3->num_rows > 0) {
 
           // Construct the table name based on the orgName and role

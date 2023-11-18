@@ -32,6 +32,7 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
         echo "Update successful!";
+        header("Location:../EditProfile.php");
     } else {
         echo $conn->error;
     }

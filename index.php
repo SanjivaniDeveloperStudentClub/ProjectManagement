@@ -1,30 +1,38 @@
 <?php
 require_once "db_connection.php"; // Include the database connection file
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // echo "om";
   $email = $_POST["username"];
   $password = $_POST["password"];
+  // echo $email;
   try {
 
     // Prepare and execute a query to check if the user exists
     $query = "SELECT * FROM Employee WHERE Email = '$email' AND Password = '$password'";
     $result = $conn->query($query);
     $username;
+    $row;
+    // echo $result->num_rows;
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
         // Access individual fields by column name
         $username = $row["Employee_Name"];
         // echo $column1Value;
+        break;
       }
     }
-
-    if ($result->num_rows == 1) {
+    if ($result && $result->num_rows == 1) {
       // Login successful
       setcookie('useremail', $email);
+      // print_r($row);
+      if ($row['Organization_Name'] == "Your Organization") {
+        header("Location:OrgRequestPage.php"); // Redirect to the home page
 
-      header("Location: home.php"); // Redirect to the home page
+      } else {
+        // Login failed
+        header("Location:home.php"); // Redirect to the home page
+      }
     } else {
-      // Login failed
       echo "Invalid email or password. Please try again.";
     }
   } catch (error) {
