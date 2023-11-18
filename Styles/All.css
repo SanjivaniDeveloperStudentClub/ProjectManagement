@@ -217,7 +217,7 @@ select {
   border-left-width: 0px;
   border-bottom-width: 0px;
   border-right-width: 0px; */
-  border: 3px solid black;
+  /* border: 3px solid black; */
 }
 
 /* Text above and below the login button */
@@ -279,7 +279,7 @@ select {
 .custom-dropdown {
   position: relative;
   display: inline-block;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   /* margin: 20px; */
 
   width: 95%;
