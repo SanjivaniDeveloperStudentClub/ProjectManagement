@@ -8,24 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $orgEmail = $_POST["org_email"];
     $orgContact = $_POST["org_contact"];
     $useremail = $_COOKIE['useremail'];
-    $Branchs = $_POST['Branchs'];
     $Admin_Level = $_POST["Access-Level"];
     $posts = $_POST["posts"];
+    $posts = serialize($posts);
     $Admin_Level_Arr =  array();
     $Branchs_arr =  array();
-    for ($i = 0; $i < count($_POST['Branchs']); $i++) {
-      if (isset($_POST['deparment' . ($i + 1)])) {
-        for ($j = 0; $j < count($_POST['deparment' . ($i + 1)]); $j++)
-          $Branchs_arr[$Branchs[$i]][$j] = $_POST['deparment' . ($i + 1)][$j];
-      }
-    }
-    print_r($Branchs_arr);
+    $Branch_arr = $_POST['branchs'];
+    $Branch_arr = serialize($Branch_arr);
+
+    $department = $_POST['departments'];
+    $department = serialize($department);
     for ($i = 0; $i < $Admin_Level; $i++) {
       $Admin_Level_Arr[] = "Admin " . ($i + 1);
     }
     $Admin_Level_Arr[] = "Normal";
     $serializedAdmin_Level_Arr = serialize($Admin_Level_Arr);
-    $serializedBranch_Arr = serialize($Branchs_arr);
 
     $empid;
     $result = "SELECT *from employee where email=$useremail";
@@ -52,12 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo "email already exist ";
             // return 0;
           } else {
-            $designation = "Default";
-            $department = "Default";
-            $branch = "Default";
-            $employee = "Default";
-
-            $insertQuery = "INSERT INTO Organization (Organization_Name,Organization_Email, Designation, Department, Branch, Employee_id,Contact_No,Email,Access_Level,Branchs,Posts) VALUES ('$orgName', '$orgEmail', 'Admin 1', '$department','$branch','$empid','$orgContact','$useremail','$serializedAdmin_Level_Arr','$serializedBranch_Arr','$postsE')";
+            $insertQuery = "INSERT INTO Organization (Organization_Name,Organization_Email, Designation, Department, Branch, Employee_id,Contact_No,Email,Access_Level,Posts) VALUES ('$orgName', '$orgEmail', 'Admin 1', '$department','$Branch_arr','$empid','$orgContact','$useremail','$serializedAdmin_Level_Arr','$posts')";
             echo $orgName;
             $CreateQuery = "CREATE TABLE " . $orgName . "_" . $empid . " (
   Request_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -134,10 +126,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="Styles\Typography.css" />
   <style>
     .branch-btn {
-      width: 24vh;
+      /* width: 24vh; */
       display: grid;
       place-items: center;
-      height: 5vh;
+      height: 3vh;
       font-size: 15px;
       margin-bottom: 2vh;
       /* background-color: red; */
@@ -172,14 +164,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Email -->
         <label for="org-email" class="container-subhead">Email</label>
         <input type="email" name="org_email" id="org-email" placeholder="Enter email id" required>
-        <label for="org-email" class="container-subhead">Branch</label>
+        <label class="container-subhead">Branch</label>
         <div id="BranchContainer">
+          <input placeholder="Branch 1" name="branchs[]" class="" id="branch">
         </div>
         <p class="logout branch-btn" onclick="addBranch()"> Add more branch</p>
+        <label for="org-email" class="container-subhead">Department</label>
+        <div id="DepartmentContainer">
+          <input placeholder="Department 1" name="departments[]" class="" id="Department">
+        </div>
+        <p class="logout branch-btn" onclick="addDepartment()"> Add more branch</p>
         <!-- Helpline Number -->
         <label class="container-subhead">Posts</label>
         <div id="post">
-          <input placeholder="Post 1" name="posts[]" class="custom-textfield" id="milestone">
+          <input placeholder="Post 1" name="posts[]" class="" id="milestone">
         </div>
         <p class="container-subhead" onclick="addPost()">Add Post</p>
         <label for="org-contact" class="container-subhead">Enter Access Level</label>
@@ -205,72 +203,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     window.history.replaceState(null, null, window.location.href);
 
   }
-  let BranchCount = 1;
 
-  const BranchContainer = document.getElementById('BranchContainer');
 
-  function addBranch(obj) {
-    let count = BranchCount;
-    const branchContainer = document.createElement('div');
-    const branchContainerchild = document.createElement('div');
-    branchContainer.classList.add('branch-container');
-    branchContainerchild.classList.add('branch-container-child');
-
-    // Create branch input field
-    const branchInput = document.createElement('input');
-    branchInput.type = 'text';
-    branchInput.placeholder = 'Branch Name';
-    branchInput.name = "Branchs[]";
-    branchInput.required = true;
-
-    // Create add department button for the branch
-    const addDepartmentButton = document.createElement('button');
-    addDepartmentButton.textContent = 'Add Department';
-    addDepartmentButton.onclick = function() {
-      addDepartment(branchContainerchild, count);
-    };
-    if (BranchCount == 1) {
-      addDepartment(branchContainerchild, count);
-
-    }
-
-    branchContainer.appendChild(branchInput);
-    branchContainer.append(branchContainerchild);
-    branchContainer.appendChild(addDepartmentButton);
-
-    // Append branch container to the body
-    BranchContainer.appendChild(branchContainer);
-    BranchCount++;
-  }
-
-  function addDepartment(branchContainer, count) {
-    // Create department input field
-    const departmentInput = document.createElement('input');
-    departmentInput.type = 'text';
-    departmentInput.placeholder = 'Department Name';
-    departmentInput.name = `deparment${count}[]`;
-
-    // Append department input to the branch container
-    branchContainer.appendChild(departmentInput);
-  }
-  // function addBranch(obj) {
-  //   BranchCount++;
-  // const BranchContainer = document.getElementById('BranchContainer');
-  //   const BranchContainer = obj;
-  //   const newBranchInput = document.createElement('input');
-  //   const newBranchLablel = document.createElement('label');
-  //   newBranchInput.name = 'Branchs[]';
-  //   newBranchLablel.innerHTML = `Branch ${BranchCount}`;
-  //   newBranchInput.placeholder = "Enter Branch Name"
-  //   newBranchInput.className = 'custom-textfield';
-  //   newBranchInput.id = 'BranchInput';
-  //   newBranchLablel.className = 'container-subhead';
-  //   BranchContainer.appendChild(newBranchLablel)
-  //   BranchContainer.appendChild(newBranchInput)
-  // }
-  function loadfun() {
-    addBranch();
-  }
   let postcount = 1;
 
   function addPost() {
@@ -282,6 +216,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     InputField.type = "text";
     InputField.placeholder = `Post ${postcount}`
     postContainer.appendChild(InputField);
+  }
+  let branchcount = 1;
+
+  function addBranch() {
+    branchcount++;
+    let BranchContainer = document.getElementById("BranchContainer");
+    let InputField = document.createElement("input");
+    InputField.required = true;
+    InputField.name = "branchs[]";
+    InputField.type = "text";
+    InputField.placeholder = `Branch ${branchcount}`
+    BranchContainer.appendChild(InputField);
+  }
+  let departmentcount = 1;
+
+  function addDepartment() {
+    departmentcount++;
+    let DepartmentContainer = document.getElementById("DepartmentContainer");
+    let InputField = document.createElement("input");
+    InputField.required = true;
+    InputField.name = "departments[]";
+    InputField.type = "text";
+    InputField.placeholder = `Department ${departmentcount}`
+    DepartmentContainer.appendChild(InputField);
   }
 </script>
 

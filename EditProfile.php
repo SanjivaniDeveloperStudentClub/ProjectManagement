@@ -1,9 +1,23 @@
 <?php
 require "./db_connection.php";
 require "./authchecker.php";
+require "./php/currentuser_details.php";
 
+$userdetail = currentuserdetails();
+$OrgName = $userdetail['Organization_Name'];
 
+$sql = "SELECT * FROM Organization Where Organization_Name = '$OrgName'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
+$Branch = $row['Branch'];
+$Branch = unserialize($Branch);
+$posts = $row['Posts'];
+$posts = unserialize($posts);
+$Departments = $row['Department'];
+print_r($Departments);
+$Departments = unserialize($Departments);
+// echo $result->num_ro
 ?>
 
 
@@ -24,6 +38,11 @@ require "./authchecker.php";
             --accent: #068FFF;
             /* Color const for background */
             --body-background: #F2F2F2;
+        }
+
+        select {
+            border: 2px solid black;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -62,25 +81,42 @@ require "./authchecker.php";
             <!-- Branch Dropdown -->
             <label class="container-subhead">Branch</label>
             <select name="branch" class="custom-dropdown" id="branch">
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
+                <?php
+                if ($result->num_rows) {
+                    for ($i = 0; $i < count($Branch); $i++) {
+
+                        echo '<option value="' . $Branch[$i] . '">' . $Branch[$i] . '</option>';
+                    }
+                }
+                ?>
+
             </select>
 
             <!-- Department Dropdown -->
             <label class="container-subhead">Department</label>
             <select name="department" class="custom-dropdown" id="department">
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
+                <?php
+                if ($result->num_rows) {
+                    for ($i = 0; $i < count($Departments); $i++) {
+
+                        echo '<option value="' . $Departments[$i] . '">' . $Departments[$i] . '</option>';
+                    }
+                }
+                ?>
+
             </select>
 
             <!-- Designation Dropdown -->
             <label class="container-subhead">Designation</label>
             <select name="designation" class="custom-dropdown" id="designation">
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
+                <?php
+                if ($result->num_rows) {
+                    for ($i = 0; $i < count($posts); $i++) {
+
+                        echo '<option value="' . $posts[$i] . '">' . $posts[$i] . '</option>';
+                    }
+                }
+                ?>
             </select>
 
 
