@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // Get the organization name and role from the form
   $useremail = $_COOKIE['useremail'];
   $orgName = $_POST["organization-name"];
+  setcookie("orgname", $orgName);
   $role = $_POST["Role"];
   //checking orginaztion
 
@@ -134,8 +135,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Request to join button -->
         <div class="row button">
           <input type="submit" value="Request to join" style="margin-top:20px ;">
+
+
         </div>
 
+        <a href="Cancel_org_request.php" name="cancel" style="margin-top:20px ;">Cancel Request to join</a>
         <!-- Create an organization -->
         <div class="container-label">Want to create an organization? <a href="CreateOrg.php">Register organization</a></div>
 
