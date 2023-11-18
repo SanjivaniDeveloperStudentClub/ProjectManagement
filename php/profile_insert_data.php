@@ -1,5 +1,6 @@
 <?php
 require "../db_connection.php";
+
 // Check if the form was submitted
 if (isset($_POST['submit'])) {
     // Get form input values
@@ -10,27 +11,27 @@ if (isset($_POST['submit'])) {
     $mobile = $_POST['mobile'];
     $telephone = $_POST['telephone'];
     $email = $_POST['email'];
+    $useremail = $_COOKIE['useremail'];
 
     // Establish a database connection (assuming you have a database connection setup)
 
     // Check the connection
-    
 
-    // Insert data into the database
-    $sql = "INSERT INTO employee_details (FullName, Branch, Department, Designation, Telephone) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $full_name, $branch, $department, $designation, $telephone);
+    // Update data in the database
+    $Updatequery = "UPDATE Employee 
+              SET Employee_Name = '$full_name',
+                  Branch = '$branch',
+                  Department = '$department',
+                  Post = '$designation',
+                  Contact_Number = '$mobile',
+                  Telephone = '$telephone'
+              WHERE Email = '$useremail'";
 
-    if ($stmt->execute()) {
-        echo "Data inserted successfully.";
+    $result = $conn->query($Updatequery);
+
+    if ($result) {
+        echo "Update successful!";
     } else {
-        echo "Error: " . $stmt->error;
+        echo $conn->error;
     }
-
-    // Close the database connection
-    $stmt->close();
-    $conn->close();
-} else {
-    echo "Form not submitted.";
 }
-?>
