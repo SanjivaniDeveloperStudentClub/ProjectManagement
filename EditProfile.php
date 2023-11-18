@@ -1,3 +1,13 @@
+<?php
+require "./db_connection.php";
+require "./authchecker.php";
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

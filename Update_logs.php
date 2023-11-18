@@ -19,11 +19,11 @@ if ($userdetail) {
         if ($orgResult->num_rows > 0) {
             $orgrow = $orgResult->fetch_assoc();
             $organizationName = $orgrow["Organization_Name"];
-            $query = "SELECT * FROM Project Where Organization_Name='$organizationName'";
+            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status != 'Disapproved' AND Update_status != 'No'";
             $proresult = $conn->query($query);
         } else {
             $organizationName = $userdetail["Organization_Name"];
-            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName'";
+            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName'AND Status != 'Disapproved' AND Update_status != 'No'";
             $proresult = $conn->query($query);
         }
     } else {
@@ -32,9 +32,6 @@ if ($userdetail) {
 } else {
     echo "Error: User details not found.";
 }
-
-
-$result = $conn->query($query);
 $username;
 ?>
 <!DOCTYPE html>
@@ -100,11 +97,11 @@ $username;
         <!-- Project and Staff tab -->
         <div class="tab-container">
             <div class="tabs" id="tabs">
-                <a href="./Logs.php"><button class="tab active " data-tab="all">All</button></a>
+                <a href="./Logs.php"><button class="tab  " data-tab="all">All</button></a>
                 <a href="./Approve_logs.php"><button class="tab " data-tab="approved">Approved</button></a>
-                <a href="./Disapprove_logs.php"><button class=" tab" data-tab="disapproved">Disapproved</button></a>
+                <a href="./Disapprove_logs.php"><button class=" tab" data-tab="disapproved">Disapproved </button></a>
                 <a href="./Action_required_logs.php"><button class="tab" data-tab="action">Action Required</button> </a>
-                <a href="./Update_logs.php"><button class="tab" data-tab="updated">Updated </button></a>
+                <a href="./Update_logs.php"><button class="tab active" data-tab="updated">Updated </button></a>
 
             </div>
         </div>

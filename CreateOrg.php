@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $useremail = $_COOKIE['useremail'];
     $Branchs = $_POST['Branchs'];
     $Admin_Level = $_POST["Access-Level"];
+    $posts = $_POST["posts"];
     $Admin_Level_Arr =  array();
     $Branchs_arr =  array();
     for ($i = 0; $i < count($_POST['Branchs']); $i++) {
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $branch = "Default";
             $employee = "Default";
 
-            $insertQuery = "INSERT INTO Organization (Organization_Name,Organization_Email, Designation, Department, Branch, Employee_id,Contact_No,Email,Access_Level,Branchs) VALUES ('$orgName', '$orgEmail', 'Admin 1', '$department','$branch','$empid','$orgContact','$useremail','$serializedAdmin_Level_Arr','$serializedBranch_Arr')";
+            $insertQuery = "INSERT INTO Organization (Organization_Name,Organization_Email, Designation, Department, Branch, Employee_id,Contact_No,Email,Access_Level,Branchs,Posts) VALUES ('$orgName', '$orgEmail', 'Admin 1', '$department','$branch','$empid','$orgContact','$useremail','$serializedAdmin_Level_Arr','$serializedBranch_Arr','$postsE')";
             echo $orgName;
             $CreateQuery = "CREATE TABLE " . $orgName . "_" . $empid . " (
   Request_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -176,6 +177,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <p class="logout branch-btn" onclick="addBranch()"> Add more branch</p>
         <!-- Helpline Number -->
+        <label class="container-subhead">Posts</label>
+        <div id="post">
+          <input placeholder="Post 1" name="posts[]" class="custom-textfield" id="milestone">
+        </div>
+        <p class="container-subhead" onclick="addPost()">Add Post</p>
         <label for="org-contact" class="container-subhead">Enter Access Level</label>
         <input type="number" name="Access-Level" id="org-contact" placeholder="Enter helpline number" required>
         <label for="org-contact" class="container-subhead">Helpline Number</label>
@@ -264,6 +270,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // }
   function loadfun() {
     addBranch();
+  }
+  let postcount = 1;
+
+  function addPost() {
+    postcount++;
+    let postContainer = document.getElementById("post");
+    let InputField = document.createElement("input");
+    InputField.required = true;
+    InputField.name = "posts[]";
+    InputField.type = "text";
+    InputField.placeholder = `Post ${postcount}`
+    postContainer.appendChild(InputField);
   }
 </script>
 

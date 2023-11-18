@@ -1,10 +1,40 @@
 <?php
 require './db_connection.php';
 require './authchecker.php';
-$query = "SELECT * FROM Project";
+require "./php/currentuser_details.php";
+
+$userdetail = currentuserdetails();
+$proresult = null;
+if ($userdetail) {
+    $employeeId = $userdetail["Employee_id"];
+
+    $orgcheck = "SELECT * FROM Organization WHERE Employee_id = ?";
+    $stmt = $conn->prepare($orgcheck);
+
+    if ($stmt) { // Check if the prepare method succeeded
+        $stmt->bind_param("i", $employeeId);
+        $stmt->execute();
+        $orgResult = $stmt->get_result();
+
+        if ($orgResult->num_rows > 0) {
+            $orgrow = $orgResult->fetch_assoc();
+            $organizationName = $orgrow["Organization_Name"];
+            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status != 'Disapproved' AND Update_status != 'No'";
+            $proresult = $conn->query($query);
+        } else {
+            $organizationName = $userdetail["Organization_Name"];
+            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName'AND Status != 'Disapproved' AND Update_status != 'No'";
+            $proresult = $conn->query($query);
+        }
+    } else {
+        echo "Error preparing the organization query: " . $conn->error;
+    }
+} else {
+    echo "Error: User details not found.";
+}
+
 
 $result = $conn->query($query);
-$username;
 ?>
 <!DOCTYPE html>
 <html lang="en">
