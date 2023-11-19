@@ -20,7 +20,6 @@ if ($userdetail) {
         if ($orgResult->num_rows > 0) {
             $orgrow = $orgResult->fetch_assoc();
             $organizationName = $orgrow["Organization_Name"];
-            echo $organizationName;
             $query = "SELECT * FROM Project Where Organization_Name='$organizationName'";
             $proresult = $conn->query($query);
         } else {
