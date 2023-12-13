@@ -33,7 +33,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location:home.php"); // Redirect to the home page
       }
     } else {
-      echo "Invalid email or password. Please try again.";
+       // Login failed
+       $error_message = "Cant find your account";
+       echo '<script>
+        function showPopup() {
+          var popup = document.createElement("div");
+          popup.classList.add("error-box");
+
+          var header = document.createElement("div");
+          header.classList.add("header");
+          var heading = document.createElement("h1");
+          heading.innerText = "Login Failed";
+          header.appendChild(heading);
+
+          var body = document.createElement("div");
+          body.classList.add("body");
+          var paragraph = document.createElement("p");
+          paragraph.innerText = "' . $error_message . '";
+          body.appendChild(paragraph);
+
+          var footer = document.createElement("div");
+          footer.classList.add("footer");
+          var button = document.createElement("button");
+          button.classList.add("ok-button");
+          button.innerText = "OK";
+          button.addEventListener("click", function() {
+            window.location.href = "index.php";
+          });
+          footer.appendChild(button);
+
+          popup.appendChild(header);
+          popup.appendChild(body);
+          popup.appendChild(footer);
+
+          document.body.appendChild(popup);
+        }
+
+        window.onload = showPopup;
+       </script>';
     }
   } catch (error) {
     echo "error";
@@ -49,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form</title>
   <link rel="stylesheet" href="Styles/All.css">
+  <link rel="stylesheet" href="Styles/error-button.css">
   <link rel="stylesheet" href="Styles/Typography.css">
 </head>
 
