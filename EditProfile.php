@@ -73,12 +73,16 @@ $Departments = unserialize($Departments);
                 <div class="logobox">
                     <div class="medium-logo">
                         <?php
-                        if ($Profile_img == null) {
-
-                            echo ' <img src="images/dcslogo.png" id="pic-img" alt="Developer Student Club Logo" class="logo-width">';
+                       if ($Profile_img == null) {
+                        if (isset($userrow["Profile_img"])) {
+                            echo '<img src="' . $userrow['Profile_img'] . '">';
                         } else {
-                            echo ' <img src="' . $Profile_img . '" id="pic-img" alt="Developer Student Club Logo" class="logo-width">';
+                            echo '<img src="./images/default-img.jpg">';
                         }
+                    } else {
+                        echo '<img src="' . $Profile_img . '" id="pic-img" alt="Developer Student Club Logo" class="logo-width">';
+                    }
+                    
                         ?>
                     </div>
                 </div>
@@ -87,7 +91,7 @@ $Departments = unserialize($Departments);
                     <input onchange="uploadImage()" accept="image/jpeg,image/png,image/jpg" style="display:none;" id="pic" name="pic" type="file" class="container-subhead" style="text-align: center; color: var(--accent);">
                 </div>
             </div>
-            <input id="picimg" style="display: none;" value="om" name="picimg" type="text">
+            <input id="picimg" style="display: none;" value="" name="picimg" type="text">
             <br>
 
             <label class="container-medhead" style="text-align: left;">Personal - </label>

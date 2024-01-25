@@ -1,4 +1,6 @@
 <?php
+require './authchecker.php';
+
 // Include your database connection code here
 require "./db_connection.php";
 
@@ -68,9 +70,16 @@ if ($result2->num_rows > 0) {
 
         <!-- Profile Overview Container -->
         <div class="logobox">
-            <div class="medium-logo">
-                <img src="<?php echo $userrow["Profile_img"] ?>" alt="Developer Student Club Logo" class="logo-width">
-            </div>
+        <div class="medium-logo">
+    <img src="<?php
+        if (isset($userrow["Profile_img"])) {
+            echo $userrow["Profile_img"];
+        } else {
+            echo "./images/default-img.jpg";
+        }
+    ?>" alt="./images/default-img.jpg" class="logo-width">
+</div>
+
         </div>
 <?php
 
