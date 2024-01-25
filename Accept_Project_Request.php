@@ -14,8 +14,7 @@ if (isset($_GET['pid'])) {
     $Approval_status = $row2['Approval_status'];
     $Approval_status = unserialize($Approval_status);
     for ($i = 0; $i < count($Approval_status) - 1; $i++) {
-        echo $Approval_status[$i];
-        echo $AdminLevel;
+        
         if ($Approval_status[$i] == $AdminLevel) {
             $Approval_status[$i] = "Normal";
             break;

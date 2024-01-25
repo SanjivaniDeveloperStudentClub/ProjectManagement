@@ -19,11 +19,11 @@ if ($userdetail) {
         if ($orgResult->num_rows > 0) {
             $orgrow = $orgResult->fetch_assoc();
             $organizationName = $orgrow["Organization_Name"];
-            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status != 'Disapproved'AND Status != 'pending'" ;
+            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status = 'Disapproved'";
             $proresult = $conn->query($query);
         } else {
             $organizationName = $userdetail["Organization_Name"];
-            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName' AND Status != 'Disapproved'AND Status != 'pending'";
+            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName' AND Status = 'Disapproved'";
             $proresult = $conn->query($query);
         }
     } else {
@@ -98,16 +98,7 @@ $username;
         <!-- <div class="container"> -->
 
         <!-- Project and Staff tab -->
-        <div class="tab-container">
-            <div class="tabs" id="tabs">
-                <a href="./Logs.php"><button class="tab  " data-tab="all">All</button></a>
-                <a href="./Approve_logs.php"><button class="tab active" data-tab="approved">Approved</button></a>
-                <a href="./Disapprove_logs.php"><button class=" tab" data-tab="disapproved">Disapproved</button></a>
-                <a href="./Action_required_logs.php"><button class="tab" data-tab="action">Action Required</button> </a>
-                <a href="./Update_logs.php"><button class="tab" data-tab="updated">Updated </button></a>
-
-            </div>
-        </div>
+      
         <script src="JavaScript\dragtabs.js"></script>
 
         <!-- Project Overview Container -->
@@ -123,7 +114,7 @@ $username;
                 $startedDate = $row["Started_Date"];
                 $Organization_Name = $row['Organization_Name'];
         ?>
-                <a href="Project_Detail_Update_Page.php?pid=<?php echo $pid ?>">
+                <a href="Details.php?pid=<?php echo $pid ?>">
                     <div class="wrapper">
                         <div class="container-row">
                             <div class="small-logo">

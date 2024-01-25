@@ -5,7 +5,6 @@ require "./php/currentuser_details.php";
 
 $userdetail = currentuserdetails();
 $proresult = null;
-
 if ($userdetail) {
     $employeeId = $userdetail["Employee_id"];
 
@@ -34,7 +33,6 @@ if ($userdetail) {
     echo "Error: User details not found.";
 }
 // print_r();
-
 $result = $conn->query($query);
 ?>
 <!DOCTYPE html>

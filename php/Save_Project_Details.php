@@ -13,9 +13,24 @@ if (isset($_POST['submit'])) {
     $milestones_status = $_POST['milestone_status'];
     $serializedMilestones = serialize($milestones);
     $serializedMilestones_status = serialize($milestones_status);
+    // echo $milestones_status[$milestones_status.length-1];
+    $Status_value;
+    for($i=0;$i<count($milestones_status);$i++){
+        if($milestones_status[$i]=="due"){
+            $Status_value="due";
+        }
+        else{
+            $Status_value="On-Going";
+
+        }
+
+    }
+    if(end($milestones_status)=="complete"){
+        $Status_value="complete";
+    }
     // You can also process the documents here if needed
     if ($Status != "Disapproved") {
-        $sql = "UPDATE Project SET Summary = '$Summary', Details = '$Details', Documents ='$Documents',title='$title',Milestones = '$serializedMilestones',Milestones_status = '$serializedMilestones_status',Requirements='$Requirements',Update_status = 'Updated'
+        $sql = "UPDATE Project SET Summary = '$Summary', Details = '$Details', Documents ='$Documents',title='$title',Milestones = '$serializedMilestones',Milestones_status = '$serializedMilestones_status',Requirements='$Requirements',Status ='$Status_value',Update_status = 'Updated'
 WHERE Project_ID=$pid";
         if ($conn->query($sql) === TRUE) {
             header("Location:../home.php");

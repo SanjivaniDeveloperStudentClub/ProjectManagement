@@ -6,7 +6,7 @@ $userdetail = currentuserdetails();
 if (!$userdetail) {
     header("Location:index.php");
 }
-$query = "SELECT * FROM Project WHERE Organization_Name = '" . $userdetail['Organization_Name'] . "' AND Status = 'On-Going'";
+$query = "SELECT * FROM Project WHERE Organization_Name = '" . $userdetail['Organization_Name'] . "' AND Status != 'Disapproved'AND Status != 'pending'";
 $result = $conn->query($query);
 
 $username;

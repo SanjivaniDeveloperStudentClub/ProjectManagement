@@ -14,7 +14,6 @@ $query_1 = "SELECT * FROM Organization Where Organization_Name='$Organization_Na
 $result_1 = $conn->query($query_1);
 $row_1 = $result_1->fetch_assoc();
 $Approval_status = $row_1['Access_Level'];
-echo $Approval_status;
 // Organization_id
 ?>
 <!DOCTYPE html>
@@ -66,15 +65,12 @@ echo $Approval_status;
         <!-- Project Overview Container -->
         <?php
         $i;
-        print_r($Approval_status);
         for ($i = count($Approval_status) - 1; $i >= 0; $i--) {
           if ($Approval_status[$i] == "Normal") {
           } else {
             break;
           }
         }
-        echo $AdminLevel;
-        echo $Approval_status[$i];
         if ($Approval_status[($i)] == $AdminLevel) {
           echo '<a href="Details.php?pid=' . $pid . '">'
         ?>

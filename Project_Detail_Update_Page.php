@@ -56,6 +56,7 @@ $username;
           $pid = $row["Project_ID"];
           $title = $row["Title"];
           $Details = $row["Details"];
+          $Status =$row["Status"];
           $Summary = $row["Summary"];
           $Requirements = $row["Requirements"];
           $Documents = $row["Documents"];
@@ -67,6 +68,7 @@ $username;
             <input name="pid" type="hidden" value="<?php echo $pid ?>">
             <label class="container-subhead">Title - </label>
             <input type="text" value="<?php echo $title ?>" name="Title" placeholder="Enter Name" class="custom-textfield">
+            <input type="hidden" value="<?php echo $Status ?>" name="Status" placeholder="Enter Name" class="custom-textfield">
             <br>
 
             <label class="container-subhead" style="margin-bottom: 10px;">Summary - </label>
@@ -301,11 +303,11 @@ $username;
           $serializedDataFromDatabase_dates = $row['Milestones_dates'];
           $milestones = unserialize($serializedDataFromDatabase);
           $milestones_status = unserialize($serializedDataFromDatabase_status);
+
           $milestones_dates = unserialize($serializedDataFromDatabase_dates);
           for ($i = 0; $i < count($milestones); $i++) {
             $currentDate = date("Y-m-d");
-
-            if (!($milestones_dates[$i] >= $currentDate)) {
+            if (!($milestones_dates[$i] >= $currentDate) ) {
               $milestones_status[$i] = "due";
             }
             echo '<input id="h' . $i . '" type="hidden" name="milestone_status[]" value="' . $milestones_status[$i] . '">';
@@ -340,7 +342,15 @@ $username;
   <br>
   <!-- UPDATE button -->
   <div class="container">
-    <input type="submit" value="Save" name="submit" class="edit-button">
+    <?php
+    if($Status=="pending" || $Status=="Disapproved"){
+
+    }
+    else{
+
+      echo '<input type="submit" value="Save" name="submit" class="edit-button">';
+    }
+    ?>
   </div>
   </div>
   </form>

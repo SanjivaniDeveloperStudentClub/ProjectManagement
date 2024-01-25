@@ -2,6 +2,9 @@
 // Include your database connection code here
 require "./db_connection.php";
 
+$orgName;
+$result2;
+$userrow;
 // Include your database connection code here
 $useremail = $_COOKIE['useremail'];
 if (!($useremail)) {
@@ -14,6 +17,7 @@ $check_query2 = "SELECT * FROM Employee WHERE Email = '$useremail'";
 $result2 = $conn->query($check_query2);
 if ($result2->num_rows > 0) {
     $row = $result2->fetch_assoc();
+    $userrow =$row;
     $orgName = $row["Organization_Name"];
     $AdminLevel = $row["AdminLevel"];
     if ($orgName == "Your Organization") {
@@ -29,7 +33,6 @@ if ($result2->num_rows > 0) {
         }
     }
 }
-
 
 ?>
 
@@ -66,18 +69,20 @@ if ($result2->num_rows > 0) {
         <!-- Profile Overview Container -->
         <div class="logobox">
             <div class="medium-logo">
-                <img src="images/dcslogo.png" alt="Developer Student Club Logo" class="logo-width">
+                <img src="<?php echo $userrow["Profile_img"] ?>" alt="Developer Student Club Logo" class="logo-width">
             </div>
         </div>
+<?php
 
+?>
         <!-- User Name -->
         <div class="clientname">
-            <p class="container-head">Developer Students Club</p>
+            <p class="container-head"><?php echo $userrow['Employee_Name']  ?></p>
         </div>
 
         <!-- Post -->
         <div class="clientname">
-            <p class="container-head">Club</p>
+        <p class="container-head"><?php echo $orgName  ?></p>
         </div>
     </div>
 

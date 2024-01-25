@@ -47,6 +47,7 @@ $username;
         $Details = $row["Details"];
         $Summary = $row["Summary"];
         $Requirements = $row["Requirements"];
+        $Status = $row["Status"];
         $Documents = $row["Documents"];
         $cost = $row["Cost"];
         $estimated_completion = $row["Estimated_Completion"];
@@ -305,23 +306,23 @@ $username;
             $milestones_dates = unserialize($serializedDataFromDatabase_dates);
             for ($i = 0; $i < count($milestones); $i++) {
               $currentDate = date("Y-m-d");
-              echo $milestones_status[$i];
-              if (!($milestones_dates[$i] < $currentDate && $milestones_status[$i]) != "complete") {
+              if (!($milestones_dates[$i] >= $currentDate) && $milestones_status[$i]=="due") {
                 $milestones_status[$i] = "due";
               }
               echo '<input id="h' . $i . '" type="hidden" name="milestone_status[]" value="' . $milestones_status[$i] . '">';
               if ($milestones_status[$i] == "complete") {
-                echo '<div name="complete" class="timline-container-complete left" >';
+                echo '<div onclick="milestoneUpdate(this,`' . $milestones_status[$i] .  '`,' . $i . ')" name="complete" class="timline-container-complete left" >';
               } elseif ($milestones_status[$i] == "due") {
-                echo '<div name="due" class="timline-container-due left">';
+                echo '<div onclick="milestoneUpdate(this,`' . $milestones_status[$i] .  '`,' . $i . ')" name="due" class="timline-container-due left">';
                 // echo '<input id="h2"  type="hidden" name="milestone_status[]" value="due">';
               } elseif ($milestones_status[$i] == "ongoing") {
-                echo '<div  name="ongoing" class="timline-container-ongoing left">';
+                echo '<div onclick="milestoneUpdate(this,`' . $milestones_status[$i] .  '`,' . $i . ')" name="ongoing" class="timline-container-ongoing left">';
                 // echo '<input id="h3" type="hidden" name="milestone_status[]" value="ongoing">';
               } else {
-                echo '<div  datacustomom="om" name="coming" class="timline-container left">';
+                echo '<div onclick="milestoneUpdate(this,`' . $milestones_status[$i] .  '`,' . $i . ')" datacustomom="om" name="coming" class="timline-container left">';
                 // echo '<input id="h4" type="hidden" name="milestone_status[]" value="coming">';
               }
+  
             ?>
               <i class="fa fa-code-fork" aria-hidden="true"></i>
               <div class="content">
@@ -380,7 +381,7 @@ $username;
                 <p class="container-body">Status -</p>
               </h3>
               <h3>
-                <p class="container-body">On-Going</p>
+                <p class="container-body"><?php echo $Status ?></p>
               </h3>
             </div>
             <div class="container-row space">
@@ -417,29 +418,6 @@ $username;
 
         <br>
 
-        <label class="container-subhead">Suggestions -</label>
-
-        <!-- Staff Overview Container -->
-        <div class="wrapper">
-          <div class="container-row">
-            <div class="small-logo">
-              <img src="images/Mirikar-sir.png" alt="dsc_logo" class="container-img" style="margin-right: 20px;">
-            </div>
-            <div class="row">
-              <!-- <div class="clientname"> -->
-              <p class="container-subhead">Mr. A. R. Mirikar</p>
-              <p class="container-subhead">Principal, Polytechnic</p>
-              <!-- </div> -->
-
-            </div>
-          </div>
-          <div class="container-text">
-            Upon successful development, the platform will be deployed on reliable cloud infrastructure, and
-            post-launch support and maintenance services will be provided to ensure smooth operation and address any
-            issues that may arise.
-          </div>
-        </div>
-
         <br>
         <br>
 
@@ -455,3 +433,23 @@ $username;
 </body>
 
 </html>
+<!-- 
+<label class="container-subhead">Suggestions -</label>
+
+<div class="wrapper">
+  <div class="container-row">
+    <div class="small-logo">
+      <img src="images/Mirikar-sir.png" alt="dsc_logo" class="container-img" style="margin-right: 20px;">
+    </div>
+    <div class="row">
+      <p class="container-subhead">Mr. A. R. Mirikar</p>
+      <p class="container-subhead">Principal, Polytechnic</p>
+
+    </div>
+  </div>
+  <div class="container-text">
+    Upon successful development, the platform will be deployed on reliable cloud infrastructure, and
+    post-launch support and maintenance services will be provided to ensure smooth operation and address any
+    issues that may arise.
+  </div>
+</div> -->

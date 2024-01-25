@@ -19,11 +19,11 @@ if ($userdetail) {
         if ($orgResult->num_rows > 0) {
             $orgrow = $orgResult->fetch_assoc();
             $organizationName = $orgrow["Organization_Name"];
-            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status = 'Disapproved'";
+            $query = "SELECT * FROM Project Where Organization_Name='$organizationName' AND Status = 'due'";
             $proresult = $conn->query($query);
         } else {
             $organizationName = $userdetail["Organization_Name"];
-            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName' AND Status = 'Disapproved'";
+            $query = "SELECT * FROM Project WHERE Organization_Name = '$organizationName' AND Status = 'due'";
             $proresult = $conn->query($query);
         }
     } else {
