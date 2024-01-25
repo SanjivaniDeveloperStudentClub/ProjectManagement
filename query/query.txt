@@ -1,0 +1,75 @@
+
+CREATE TABLE `employee` (
+  `Employee_id` int NOT NULL AUTO_INCREMENT,
+  `Email` text,
+  `Employee_Name` text,
+  `Contact_Number` int DEFAULT NULL,
+  `Password` text,
+  `Assigned_Projects` int DEFAULT NULL,
+  `Organization_Name` text,
+  `AdminLevel` text,
+  `Telephone` text,
+  `Department` text,
+  `Branch` text,
+  `Post` text,
+  `Profile_img` text,
+  PRIMARY KEY (`Employee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1034 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `project` (
+  `Project_ID` int NOT NULL AUTO_INCREMENT,
+  `Started_Date` datetime DEFAULT NULL,
+  `Estimated_Completion` datetime DEFAULT NULL,
+  `Cost` decimal(10,0) DEFAULT NULL,
+  `Summary` text,
+  `Details` text,
+  `Requirements` text,
+  `Documents` text,
+  `Suggestions` text,
+  `Department` text,
+  `Title` text,
+  `Status` text,
+  `Employee_id` int DEFAULT NULL,
+  `Milestones` text,
+  `Milestones_status` text,
+  `Approval_status` text,
+  `Organization_Name` text,
+  `Milestones_dates` text,
+  `Update_status` text,
+  PRIMARY KEY (`Project_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `organization` (
+  `Organization_id` int NOT NULL AUTO_INCREMENT,
+  `Organization_Name` tinytext,
+  `Organization_Email` text,
+  `Designation` tinytext,
+  `Department` tinytext,
+  `Branch` tinytext,
+  `Employee_id` tinytext,
+  `Contact_No` int DEFAULT NULL,
+  `Email` tinytext,
+  `Access_Level` text,
+  `Branchs` text,
+  `Posts` text,
+  PRIMARY KEY (`Organization_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `organization` (
+  `Organization_id` int NOT NULL AUTO_INCREMENT,
+  `Organization_Name` tinytext,
+  `Organization_Email` text,
+  `Designation` tinytext,
+  `Department` tinytext,
+  `Branch` tinytext,
+  `Employee_id` tinytext,
+  `Contact_No` int DEFAULT NULL,
+  `Email` tinytext,
+  `Access_Level` text,
+  `Branchs` text,
+  `Posts` text,
+  PRIMARY KEY (`Organization_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+

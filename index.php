@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   try {
 
     // Prepare and execute a query to check if the user exists
-    $query = "SELECT * FROM Employee WHERE Email = '$email' AND Password = '$password'";
+    $query = "SELECT * FROM employee WHERE Email = '$email' AND Password = '$password'";
     $result = $conn->query($query);
     $username;
     $row;
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       while ($row = $result->fetch_assoc()) {
         // Access individual fields by column name
         $username = $row["Employee_Name"];
-        // echo $column1Value;
+        echo $username;
         break;
       }
     }
