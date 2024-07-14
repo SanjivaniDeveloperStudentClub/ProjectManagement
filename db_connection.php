@@ -6,7 +6,7 @@
 $servername = "localhost";
 $username = "root";
 // $password = "luffy@0852";
-$password = "";
+$password = "sidd";
 $database = "pm";
 
 // Create a connection to the MySQL database

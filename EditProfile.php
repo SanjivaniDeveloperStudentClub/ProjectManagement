@@ -14,21 +14,16 @@ $Telephone = $userdetail['Telephone'];
 $Contact = $userdetail['Contact_Number'];
 $Full_Name = $userdetail['Employee_Name'];
 
-//org details
-$sql = "SELECT * FROM Organization Where Organization_Name = '$OrgName'";
-$result = $conn->query($sql);
+// Fetch organization details using prepared statements
+$stmt = $conn->prepare("SELECT * FROM Organization WHERE Organization_Name = ?");
+$stmt->bind_param("s", $OrgName);
+$stmt->execute();
+$result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$Branch = $row['Branch'];
-$Branch = unserialize($Branch);
-$posts = $row['Posts'];
-$posts = unserialize($posts);
-$Departments = $row['Department'];
-$Departments = unserialize($Departments);
-// echo $result->num_ro
+$Branch = unserialize($row['Branch']);
+$posts = unserialize($row['Posts']);
+$Departments = unserialize($row['Department']);
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +51,7 @@ $Departments = unserialize($Departments);
 
 <body>
     <div class="container">
-        <form action="./php/profile_insert_data.php" method="post">
+        <form action="./php/profile_insert_data.php" method="post" enctype="multipart/form-data">
             <nav class="top">
                 <a href="profile.php">
                     <div class="small-circle" style="margin-right: 20px;">
@@ -65,7 +60,6 @@ $Departments = unserialize($Departments);
                 </a>
                 <div class="large-head">
                     <div name="title">Edit</div>
-                    <!-- </div> -->
                 </div>
             </nav>
 
@@ -73,22 +67,17 @@ $Departments = unserialize($Departments);
                 <div class="logobox">
                     <div class="medium-logo">
                         <?php
-                       if ($Profile_img == null) {
-                        if (isset($userrow["Profile_img"])) {
-                            echo '<img src="' . $userrow['Profile_img'] . '">';
+                        if ($Profile_img) {
+                            echo '<img src="' . $Profile_img . '" id="pic-img" alt="Profile Image" class="logo-width">';
                         } else {
-                            echo '<img src="./images/default-img.jpg">';
+                            echo '<img src="./images/default-img.jpg" id="pic-img" alt="Default Image" class="logo-width">';
                         }
-                    } else {
-                        echo '<img src="' . $Profile_img . '" id="pic-img" alt="Developer Student Club Logo" class="logo-width">';
-                    }
-                    
                         ?>
                     </div>
                 </div>
                 <div class="clientname" style="display:flex; justify-content:center;">
-                    <label onselect="uploadImage()" for="pic">Change</label>
-                    <input onchange="uploadImage()" accept="image/jpeg,image/png,image/jpg" style="display:none;" id="pic" name="pic" type="file" class="container-subhead" style="text-align: center; color: var(--accent);">
+                    <label for="pic" class="container-subhead" style="text-align: center; color: var(--accent); cursor: pointer;">Change</label>
+                    <input onchange="uploadImage()" accept="image/jpeg,image/png,image/jpg" style="display:none;" id="pic" name="pic" type="file" class="container-subhead">
                 </div>
             </div>
             <input id="picimg" style="display: none;" value="" name="picimg" type="text">
@@ -97,78 +86,51 @@ $Departments = unserialize($Departments);
             <label class="container-medhead" style="text-align: left;">Personal - </label>
 
             <label class="container-subhead">Full Name - </label>
-            <?php echo '<input type="text" value="' . $Full_Name . '" name="full_name" placeholder="Enter your full name" class="custom-textfield">';
-            ?>
+            <input type="text" value="<?php echo htmlspecialchars($Full_Name); ?>" name="full_name" placeholder="Enter your full name" class="custom-textfield">
 
             <!-- Branch Dropdown -->
             <label class="container-subhead">Branch</label>
             <select name="branch" class="custom-dropdown" id="branch">
                 <?php
-                if ($result->num_rows) {
-                    for ($i = 0; $i < count($Branch); $i++) {
-                        if ($Branch[$i] == $branch) {
-
-                            echo '<option selected value="' . $Branch[$i] . '">' . $Branch[$i] . '</option>';
-                        } else {
-
-                            echo '<option value="' . $Branch[$i] . '">' . $Branch[$i] . '</option>';
-                        }
-                    }
+                foreach ($Branch as $branchOption) {
+                    $selected = ($branchOption == $branch) ? 'selected' : '';
+                    echo '<option value="' . htmlspecialchars($branchOption) . '" ' . $selected . '>' . htmlspecialchars($branchOption) . '</option>';
                 }
                 ?>
-
             </select>
 
             <!-- Department Dropdown -->
             <label class="container-subhead">Department</label>
             <select name="department" class="custom-dropdown" id="department">
                 <?php
-                if ($result->num_rows) {
-                    for ($i = 0; $i < count($Departments); $i++) {
-                        if ($Departments[$i] == $dep) {
-
-                            echo '<option selected value="' . $Departments[$i] . '">' . $Departments[$i] . '</option>';
-                        } else {
-
-                            echo '<option value="' . $Departments[$i] . '">' . $Departments[$i] . '</option>';
-                        }
-                    }
+                foreach ($Departments as $departmentOption) {
+                    $selected = ($departmentOption == $dep) ? 'selected' : '';
+                    echo '<option value="' . htmlspecialchars($departmentOption) . '" ' . $selected . '>' . htmlspecialchars($departmentOption) . '</option>';
                 }
                 ?>
-
             </select>
 
             <!-- Designation Dropdown -->
             <label class="container-subhead">Post</label>
             <select name="designation" class="custom-dropdown" id="designation">
                 <?php
-                if ($result->num_rows) {
-                    for ($i = 0; $i < count($posts); $i++) {
-                        if ($posts[$i] == $post1) {
-
-                            echo '<option selected value="' . $posts[$i] . '">' . $posts[$i] . '</option>';
-                        } else {
-                            echo '<option value="' . $posts[$i] . '">' . $posts[$i] . '</option>';
-                        }
-                    }
+                foreach ($posts as $postOption) {
+                    $selected = ($postOption == $post1) ? 'selected' : '';
+                    echo '<option value="' . htmlspecialchars($postOption) . '" ' . $selected . '>' . htmlspecialchars($postOption) . '</option>';
                 }
                 ?>
             </select>
 
-
             <label class="container-medhead" style="text-align: left;">Contact - </label>
 
             <label class="container-subhead">Mobile - </label>
-            <?php echo ' <input type="text" value="' . $Contact . '" name="mobile" placeholder="Enter your mobile number" class="custom-textfield">';
-            ?>
+            <input type="text" value="<?php echo htmlspecialchars($Contact); ?>" name="mobile" placeholder="Enter your mobile number" class="custom-textfield">
 
             <label class="container-subhead">Telephone - </label>
-            <?php echo '<input value="' . $Telephone . '" type="text" name="telephone" placeholder="Enter your telephone number" class="custom-textfield">';
-            ?>
+            <input type="text" value="<?php echo htmlspecialchars($Telephone); ?>" name="telephone" placeholder="Enter your telephone number" class="custom-textfield">
+
             <label class="container-subhead">Email - </label>
-            <?php
-            echo '<input value="' . $Email . '" type="text" name="email" placeholder="Enter your email id" class="custom-textfield">';
-            ?>
+            <input type="text" value="<?php echo htmlspecialchars($Email); ?>" name="email" placeholder="Enter your email id" class="custom-textfield">
 
             <br>
             <br>
@@ -178,49 +140,36 @@ $Departments = unserialize($Departments);
             </div>
         </form>
     </div>
-</body>
-<script>
-    async function uploadImage() {
-        console.log("error");
-        let uploadurl = null;
-        const pic_img = document.getElementById('pic-img');
-        const fileInput = document.getElementById('pic');
-        const file = fileInput.files[0];
-        const data = new FormData();
-        data.append("file", file);
-        data.append("upload_preset", "projectmanagement");
-        data.append("cloud_name", "dq0ngkijj");
 
-        await fetch("https://api.cloudinary.com/v1_1/dq0ngkijj/image/upload", {
-            method: "POST",
-            body: data
-        }).then((res) => res.json()).then((data) => uploadurl = data.url).catch((error) => console.log(error));
+    <script>
+        async function uploadImage() {
+            const picImg = document.getElementById('pic-img');
+            const fileInput = document.getElementById('pic');
+            const file = fileInput.files[0];
+            const data = new FormData();
+            data.append("file", file);
+            data.append("upload_preset", "projectmanagement");
+            data.append("cloud_name", "dq0ngkijj");
 
-        if (file) {
-            if (window.URL) {
-                const imageUrl = URL.createObjectURL(file);
-                pic_img.src = uploadurl;
-                picimg.value = uploadurl;
-                console.log(imageUrl);
-            } else {
-                console.error('createObjectURL is not supported in this browser');
+            try {
+                const response = await fetch("https://api.cloudinary.com/v1_1/dq0ngkijj/image/upload", {
+                    method: "POST",
+                    body: data
+                });
+                const result = await response.json();
+                const uploadUrl = result.url;
+
+                if (file) {
+                    picImg.src = uploadUrl;
+                    document.getElementById('picimg').value = uploadUrl;
+                } else {
+                    console.error('No file selected.');
+                }
+            } catch (error) {
+                console.error('Error uploading image:', error);
             }
-        } else {
-            console.error('No file selected.');
         }
-    }
-
-    let image = ""
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "projectmanagement");
-    data.append("cloud_name", "dq0ngkijj");
-
-    fetch("https://api.cloudinary.com/v1_1/dq0ngkijj/image/upload", {
-        method: "POST",
-        body: data
-    }).then((res) => res.json()).then((data) => console.log(data)).catch((error) => console.log(error));
-    // 289535213843854:ZDqnmrM46TEOZLxal5qrux-_0Mc@dq0ngkijj")
-</script>
+    </script>
+</body>
 
 </html>

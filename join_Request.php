@@ -51,8 +51,8 @@ $Access_Levels = unserialize($Access_Level);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-    <link rel="stylesheet" href="Styles\All.css" />
-    <link rel="stylesheet" href="Styles\Typography.css" />
+    <link rel="stylesheet" href="Styles/All.css">
+    <link rel="stylesheet" href="Styles/Typography.css">
 
     <title>Dashboard</title>
     <style>
@@ -63,15 +63,13 @@ $Access_Levels = unserialize($Access_Level);
 </head>
 
 <body>
-    <!-- <div class="help-support-main-section"> -->
-
     <div class="container">
 
         <!-- Back button with page name -->
         <nav class="top">
             <a href="profile.php">
                 <div class="small-circle" style="margin-right: 20px;">
-                    <img src="img\Back.png" alt="Back arrow">
+                    <img src="img/Back.png" alt="Back arrow">
                 </div>
             </a>
             <div class="large-head">
@@ -86,15 +84,13 @@ $Access_Levels = unserialize($Access_Level);
     </div>
 
     <form class="container" method="post" action="./Accept.php">
-        <input type="hidden" name="emp_id" value="<?php echo $employee_id ?>">
+        <input type="hidden" name="emp_id" value="<?php echo $employee_id; ?>">
         <table>
             <thead class="container-body">
                 <tr>
-                    <td>Empoyeee id</td>
-
+                    <td>Employee ID</td>
                     <td>Name</td>
                     <td style="margin: 0 6vh;">Role</td>
-
                 </tr>
             </thead>
             <tbody class="container-label">
@@ -106,47 +102,36 @@ $Access_Levels = unserialize($Access_Level);
                         $REmployee_Name = $row1["REmployee_Name"];
                         $REmployee_id = $row1["REmployee_id"];
                         $Role = $row1["Role"];
-
                 ?>
                         <tr>
-                            <td>
-                                <?php echo $REmployee_id; ?>
-                            </td>
-                            <td>
-                                <?php echo $REmployee_Name; ?>
-                            </td>
+                            <td><?php echo $REmployee_id; ?></td>
+                            <td><?php echo $REmployee_Name; ?></td>
                             <td>
                                 <select name="Role">
                                     <?php
-                                    for ($i = 0; $i < count($Access_Levels); $i++) {
-                                        if ($i == (count($Access_Levels) - 1)) {
-
-                                            echo "<option selected value='$Access_Levels[$i]'>$Access_Levels[$i]</option>";
-                                        } else {
-                                            echo "<option value='$Access_Levels[$i]'>$Access_Levels[$i]</option>";
-                                        }
+                                    foreach ($Access_Levels as $access_level) {
+                                        $selected = ($access_level === end($Access_Levels)) ? 'selected' : '';
+                                        echo "<option value='$access_level' $selected>$access_level</option>";
                                     }
                                     ?>
                                 </select>
                             </td>
                         </tr>
-            </tbody>
-        </table>
-<?php
-                        echo '<input type="submit" class="small-button safe-button" value="Accept" name="Accept"></input>
-                <input type="submit" class="small-button safe-button" value="Reject" name="Reject"></input>';
+                <?php
                     }
                 }
-?>
-
+                ?>
+            </tbody>
+        </table>
+        <div class="button-group">
+            <input type="submit" class="small-button safe-button" value="Accept" name="Accept">
+            <input type="submit" class="small-button safe-button" value="Reject" name="Reject">
+        </div>
     </form>
-
 
 </body>
 <script>
-    // function hello(){
-    // hello("om");
-    // }
+    // JavaScript code can be added here if needed
 </script>
 
 </html>

@@ -129,9 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $Department = $row['Department'];
                     $Branch = $row['Branch'];
                     $Post = $row['Post'];
-
-
-
             ?>
                     <div class="wrapper">
                         <div class="container-row">
